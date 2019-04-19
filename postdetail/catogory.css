@@ -1,0 +1,14 @@
+
+.news-cell{
+    display: inline-block;
+  
+}
+
+.img-news-preview{
+    display: flex;
+    justify-content: flex-start;
+    position: relative;
+    width: 220px;
+    height: 125px;
+
+}
