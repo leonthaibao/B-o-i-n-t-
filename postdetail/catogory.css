@@ -12,3 +12,8 @@
     height: 125px;
 
 }
+.news-related{
+    width: 300px;
+  padding: 0px;
+  box-sizing: border-box;
+}
