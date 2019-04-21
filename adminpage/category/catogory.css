@@ -1,7 +1,18 @@
-
+.list-main-content{
+    background-color: whitesmoke;
+    height: auto;
+    widows: 100%;
+}
 .news-cell{
     display: inline-block;
-  
+    margin-top: 30px;
+}
+.preview{
+    float: left;
+}
+.news-abstract {
+    padding: 0 30px;
+
 }
 
 .img-news-preview{
@@ -12,30 +23,8 @@
     height: 125px;
 
 }
-.news-related{
-    
-     width: 300px;
-  
-  box-sizing: border-box;
-}
-
-.list-main-content{
-    background-color: whitesmoke;
-    height: auto;
-    widows: 100%;
-}
-
-.preview{
-
-}
-.news-abstract {
-    padding: 0 30px;
-
-}
-
-
 .news-title{
-  
+    padding: 0 8px;    
     
 }
 .news-content{
@@ -44,7 +33,7 @@
 .news-content-item{
 
 }
-a:link { color: black; }  } a:hover { color: rebeccapurple; } a:active { color: teal; }
+a:link { color: black; } a:visited { color: green; } a:hover { color: rebeccapurple; } a:active { color: teal; }
 
 
 
