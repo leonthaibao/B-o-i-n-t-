@@ -13,7 +13,50 @@
 
 }
 .news-related{
-    width: 300px;
-  padding: 0px;
+    
+     width: 300px;
+  
   box-sizing: border-box;
 }
+
+.list-main-content{
+    background-color: whitesmoke;
+    height: auto;
+    widows: 100%;
+}
+
+.preview{
+
+}
+.news-abstract {
+    padding: 0 30px;
+
+}
+
+
+.news-title{
+  
+    
+}
+.news-content{
+
+}
+.news-content-item{
+
+}
+a:link { color: black; }  } a:hover { color: rebeccapurple; } a:active { color: teal; }
+
+
+
+
+
+.news-content-item::before{
+    border-left:1px solid;
+    content:"";
+    display:inline-block;
+    height:1.1em;
+    margin:0 .3em;
+    vertical-align:middle;
+    width:2px
+}
+
