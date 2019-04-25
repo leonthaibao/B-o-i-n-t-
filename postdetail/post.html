@@ -5,14 +5,24 @@
         <title>
             Danh sách nông sản
         </title>
-        <link rel="stylesheet" type="text/css" href="catogory.css">
+        <link rel="stylesheet" type="text/css" href="post.css">
         <link rel="shortcut icon" type="image/png" href="icon.jpg"/>
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
         <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+
+        <link href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async=""></script>
     </head>
+    <!--body-->
     <body>
+
+<!---->
         <div class="list-main-content">
             <div class="container">
+
                 <h1>Header page</h1>
                 <p>Nav bar show.</p> 
             </div>
@@ -64,7 +74,36 @@ Ngoài lý do khách quan là xu thế chung của thế giới thì phần lớ
                                <a href="#">vấn đề nhà nông</a>
                             </span>
                         </div>
-                    </div>  
+                    </div>
+                    <hr>
+
+                    <link rel="stylesheet" href="http://fontawesome.io/assets/font-awesome/css/font-awesome.css">
+<div class="container">
+    <div class="row">
+        <h5>Để lại bình luận</h5>
+    </div>
+    
+    <div class="row">
+    
+    <div class="col-md-12">
+                            <div class="widget-area no-padding blank">
+                                <div class="status-upload">
+                                    <form>
+                                        <textarea placeholder="Leave your comment here" ></textarea>
+                                        <ul>
+                                            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+                                            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+                                            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+                                            <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                                        </ul>
+                                        <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+                                    </form>
+                                </div><!-- Status Upload  -->
+                            </div><!-- Widget Area -->
+                        </div>
+        
+    </div>
+</div>  
                  <hr>
                  <div>
                    <h3> bài viết cùng chuyên mục</h3>
@@ -103,5 +142,12 @@ Ngoài lý do khách quan là xu thế chung của thế giới thì phần lớ
                 <h1>Footer show</h1>
             </div>          
         </div>
+        <script type="text/javascript">
+            $(document).ready(function(){
+             $("[data-toggle=tooltip]").tooltip();
+        });
+        </script>
+
+
     </body>
 </html>
