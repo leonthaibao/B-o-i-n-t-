@@ -1,10 +1,56 @@
 body {
-    padding : 10px ;
-    
+    font-family: Helvetica,Arial,sans-serif;
+    font-size: 16px;
+    line-height: 1.254em;
+    margin: 0;
+    padding: 0;
 }
-  
-.tab-content {
-    color : white;
-    background-color: #428bca;
-    padding : 5px 15px;
+.image{
+    width: 225px;
+    height: 70px;
+    border: 0;
+    alt: Home;
+}
+.container {
+    padding-left: 250px;
+    position: relative;
+    left: 0;
+    width: 100%;
+}
+.top-bar{
+    position: fixed;
+    left: 250;
+    right: 0;
+    top:0;
+    background-color:#4166a7;
+    height: 50px;
+}
+.menu {
+    position: fixed;
+    height: 100%;
+    background-color:#160849;
+    width: 250px;
+    left: 0;
+    top:0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 14px;
+}
+
+.menu a{
+    color: white;
+}
+.content {
+    top: 0;
+    left: 250px;
+    right: 0;
+    bottom: 0;
+}
+.view-content{
+    margin-top: 75px;
+}
+.footer{
+    margin-top: 150px;
+    font-size: 85%;
+    border-top: 1px solid #E6E6E6;
+    color: #838383;
 }
