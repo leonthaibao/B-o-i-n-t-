@@ -19,8 +19,7 @@
           <a href="..." id="news">
             <img src="img\breaknew.png">
           </a>       
-          <input type="text" id="search" placeholder="Search..." />
-          <button type="button" class="btn btn-light"><i class="fa fa-search"></i></button> 
+          
         </form>
          
       </div>
@@ -32,32 +31,49 @@
     </div>
 
     <div id="main-nav">
-      <nav class="navbar navbar-expand-sm bg-purple navbar-dark">
-        <!-- Brand -->
+      <nav class="navbar navbar-expand-lg navbar-dark">
         <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
 
-        <!-- Links -->
-        <ul class="navbar-nav">
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link 1</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">Link 2</a>
-          </li>
-
-          <!-- Dropdown -->
-          <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbardrop" data-toggle="dropdown">
-              Dropdown link
-            </a>
-            <div class="dropdown-menu">
-              <a class="dropdown-item" href="#">Link 1</a>
-              <a class="dropdown-item" href="#">Link 2</a>
-              <a class="dropdown-item" href="#">Link 3</a>
-            </div>
-          </li>
-        </ul>
-      </nav> 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Thể thao <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Bóng đá</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Kinh doanh
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Hải sản</a>
+                <a class="dropdown-item" href="#">Nông sản</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Khác</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hình sự
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#">Trong nước</a>
+                <a class="dropdown-item" href="#">Ngoài nước</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#">Khác</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
     </div>
 
 
@@ -103,12 +119,17 @@
 </div>
 
   <div id="body">
-    <h2>Chuyen muc test</h2>
+    <br>
+    <div>
+      <h2 class="head-title">Nổi bật</h2>
+    </div>
+   
+   <div id="body-card">
     <div class="card-deck">
       <div class="card">
-        <img src="img/work.png" class="card-img-top" alt="...">
+        <a href="#"><img src="img/work.png" class="card-img-top" alt="..."></a>
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
+          <h5 class="card-title"><a href="#">Card title</a></h5>
           <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
           <div class="new-content news-title">
                             <span class="badge badge-pill badge-success">
@@ -119,34 +140,126 @@
         </div>
       </div>
       <div class="card">
-        <img src="img/work.png" class="card-img-top" alt="...">
+        <a href="#"><img src="img/work.png" class="card-img-top" alt="..."></a>
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+          <h5 class="card-title"><a href="#">Card title</a></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <div class="new-content news-title">
+                            <span class="badge badge-pill badge-success">
+                               <a href="#">hải sản nước nhà </a>
+                            </span>
+                        </div>
+          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+       </div>
+    </div>
+    
+
+    </div> 
+    <br>
+    <div class="card-deck">
+      <div class="card">
+        <a href="#"><img src="img/work.png" class="card-img-top" alt="..."></a>
+        <div class="card-body">
+          <h5 class="card-title"><a href="#">Card title</a></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <div class="new-content news-title">
+                            <span class="badge badge-pill badge-success">
+                               <a href="#">hải sản nước nhà </a>
+                            </span>
+                        </div>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
         </div>
       </div>
       <div class="card">
-        <img src="img/work.png" class="card-img-top" alt="...">
+        <a href="#"><img src="img/work.png" class="card-img-top" alt="..."></a>
         <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+          <h5 class="card-title"><a href="#">Card title</a></h5>
+          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          <div class="new-content news-title">
+                            <span class="badge badge-pill badge-success">
+                               <a href="#">hải sản nước nhà </a>
+                            </span>
+                        </div>
           <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
-
-       <div class="card">
-        <img src="img/work.png" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
-          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
-        </div>
-      </div>
+       </div>
     </div>
 
-  <!-- Footer -->
-<footer class="page-footer font-small unique-color-dark">
+
+    </div> 
+    <div id="most-popular-body">
+      <br>
+    <div>
+      <h2 class="head-title">Xem nhiều</h2>
+    </div>
+      <div class="card-columns">
+        <div class="card">
+          <img class="card-img-top" src="img/work.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title that wraps to a new line</h5>
+            <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+          </div>
+        </div>
+        <div class="card p-3">
+          <blockquote class="blockquote mb-0 card-body">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">
+              <small class="text-muted">
+                Someone famous in <cite title="Source Title">Source Title</cite>
+              </small>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="card">
+          <img class="card-img-top" src="img/work.png" alt="Card image cap">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <div class="card bg-primary text-white text-center p-3">
+          <blockquote class="blockquote mb-0">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat.</p>
+            <footer class="blockquote-footer">
+              <small>
+                Someone famous in <cite title="Source Title">Source Title</cite>
+              </small>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="card text-center">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This card has supporting text below as a natural lead-in to additional content.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+        <div class="card">
+          <img class="card-img" src="img/work.png" alt="Card image">
+        </div>
+        <div class="card p-3 text-right">
+          <blockquote class="blockquote mb-0">
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante.</p>
+            <footer class="blockquote-footer">
+              <small class="text-muted">
+                Someone famous in <cite title="Source Title">Source Title</cite>
+              </small>
+            </footer>
+          </blockquote>
+        </div>
+        <div class="card">
+          <div class="card-body">
+            <h5 class="card-title">Card title</h5>
+            <p class="card-text">This is a wider card with supporting text below as a natural lead-in to additional content. This card has even longer content than the first to show that equal height action.</p>
+            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+          </div>
+        </div>
+      </div>
+    </div> 
+  </div>
+
+  <div id="footer">
+    <footer class="page-footer font-small unique-color-dark">
 
     <div style="background-color: #6351ce;">
       <div class="container">
@@ -268,8 +381,6 @@
 
   </footer>
   <!-- Footer -->
-    
-   
   </div>
 
 
