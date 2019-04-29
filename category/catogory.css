@@ -11,7 +11,7 @@
     float: left;
 }
 .news-abstract {
-    padding: 0 30px;
+    padding: 0 50px;
 
 }
 
@@ -49,3 +49,6 @@ a:link { color: black; } a:visited { color: green; } a:hover { color: rebeccapur
     width:2px
 }
 
+.news-content-icon::before{
+    padding: 0 8px;
+}
