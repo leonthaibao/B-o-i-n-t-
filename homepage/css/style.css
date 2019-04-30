@@ -111,9 +111,8 @@ background-color: #F1F1F3;
   clear: both;
   margin-bottom: 20px;
 }
-.category-list li{
-	margin-right: 20px;
-}
+
+
 .widgets .category-list li a span {
   float: right;
   color: #fff;
@@ -164,4 +163,31 @@ a{
 }
 .dropdown-item{
 	color: white;
+}
+.btn-outline-success{
+	color: white;
+	border-color: white;
+}
+
+.card-title a{
+	color: black;
+}
+.card-title a:hover{
+	text-decoration: none;
+	color: #4B64FF
+}
+
+.badge-pill a{
+	color: black;
+}
+small {
+	color: black;
+}
+small cite a {
+	color: red;
+}
+small cite a:hover{
+
+	text-decoration: none;
+	color: #4B64FF
 }
