@@ -39,9 +39,20 @@
 
             <div class="content">
                 <div class="top-bar d-flex justify-content-end">
-                    <a href="#" class="btn align-content-center">
-                        <i class="fas fa-user fa-2x"></i>
-                    </a>
+                        <div class="dropdown  userbutton">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a href="#" class="btn">
+                                    <i class="fas fa-user fa-x"></i>
+                                    </a>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    
+                                    <a class="dropdown-item" href="#"><i class="fas fa-info justify-content-start"></i>Thông tin tài khoản</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-user-cog justify-content-start"></i>Cập nhật thông tin</a>
+                                    <hr>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt justify-content-start"></i>Đăng xuất</a>
+                                </div>
+                            </div>  
                     <a href="#" class="btn btn-info btn-lg">
                         <i class="fas fa-sign-out-alt"></i> Sign out
                     </a>
@@ -274,7 +285,12 @@
                         
                 </footer>           
             </div>
-
+              <!-- Optional JavaScript -->
+            <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+            <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+            <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+            <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+        
         </div>
     </body>
 </html>
