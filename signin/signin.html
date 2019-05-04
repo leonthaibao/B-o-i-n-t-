@@ -15,49 +15,85 @@
     <title>Login</title>
 </head>
 <body>
+    <div id="header">
+      <div>     
+        <form>
+          <a href="..." id="news">
+            <img src="img\breaknew.png">
+          </a>       
+          
+        </form>
+         
+      </div>
+      <button type="button" class="btn btn-primary" id="btns"><i class="fas fa-sign-in-alt"></i> Đăng nhập</button>
+  </div>
+     <div id="main-nav">
+      <nav class="navbar navbar-expand-lg navbar-dark">
+        <a class="navbar-brand" href="#">Home</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link" href="#">Thể thao <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#">Bóng đá</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Kinh doanh
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#" style="color: black;">Hải sản</a>
+                <a class="dropdown-item" href="#" style="color: black;">Nông sản</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" style="color: black;">Khác</a>
+              </div>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                Hình sự
+              </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                <a class="dropdown-item" href="#" style="color: black;">Trong nước</a>
+                <a class="dropdown-item" href="#" style="color: black;">Ngoài nước</a>
+                <div class="dropdown-divider"></div>
+                <a class="dropdown-item" href="#" style="color: black;">Khác</a>
+              </div>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+    </div>
+
     <div id="logreg-forms">
         <form class="form-signin">
-            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Sign in</h1>
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align: center"> Đăng nhập</h1>
             <div class="social-login">
-                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign in with Facebook</span> </button>
-                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign in with Google+</span> </button>
+                <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Đăng nhập
+                với Facebook</span> </button>
+                <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Đăng nhập
+                với Google+</span> </button>
             </div>
-            <p style="text-align:center"> OR  </p>
+            <p style="text-align:center"> Hoặc  </p>
             <input type="email" id="inputEmail" class="form-control" placeholder="Email address" required="" autofocus="">
             <input type="password" id="inputPassword" class="form-control" placeholder="Password" required="">
             
-            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Sign in</button>
-            <a href="#" id="forgot_pswd">Forgot password?</a>
+            <button class="btn btn-success btn-block" type="submit"><i class="fas fa-sign-in-alt"></i> Đăng nhập</button>
+            <a href="#" id="forgot_pswd">Quên mật khẩu?</a>
             <hr>
             <!-- <p>Don't have an account!</p>  -->
-            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Sign up New Account</button>
+            <button class="btn btn-primary btn-block" type="button" id="btn-signup"><i class="fas fa-user-plus"></i> Tạo mới tài khoản</button>
             </form>
 
-            <form action="/reset/password/" class="form-reset">
-                <input type="email" id="resetEmail" class="form-control" placeholder="Email address" required="" autofocus="">
-                <button class="btn btn-primary btn-block" type="submit">Reset Password</button>
-                <a href="#" id="cancel_reset"><i class="fas fa-angle-left"></i> Back</a>
-            </form>
-            
-            <form action="/signup/" class="form-signup">
-                <div class="social-login">
-                    <button class="btn facebook-btn social-btn" type="button"><span><i class="fab fa-facebook-f"></i> Sign up with Facebook</span> </button>
-                </div>
-                <div class="social-login">
-                    <button class="btn google-btn social-btn" type="button"><span><i class="fab fa-google-plus-g"></i> Sign up with Google+</span> </button>
-                </div>
-                
-                <p style="text-align:center">OR</p>
-
-                <input type="text" id="user-name" class="form-control" placeholder="Full name" required="" autofocus="">
-                <input type="email" id="user-email" class="form-control" placeholder="Email address" required autofocus="">
-                <input type="password" id="user-pass" class="form-control" placeholder="Password" required autofocus="">
-                <input type="password" id="user-repeatpass" class="form-control" placeholder="Repeat Password" required autofocus="">
-
-                <button class="btn btn-primary btn-block" type="submit"><i class="fas fa-user-plus"></i> Sign Up</button>
-                <a href="#" id="cancel_signup"><i class="fas fa-angle-left"></i> Back</a>
-            </form>
-            <br>
+           
             
     </div>
     <p style="text-align:center">
@@ -79,8 +115,130 @@ $(()=>{
     $('#logreg-forms #cancel_reset').click(toggleResetPswd);
     $('#logreg-forms #btn-signup').click(toggleSignUp);
     $('#logreg-forms #cancel_signup').click(toggleSignUp);
-})g" target="_blank" style="color:black">By Artin</a>
+})g" target="_blank" style="color:black"></a>
     </p>
+
+    <footer class="page-footer font-small unique-color-dark">
+
+                    <div style="background-color: #6351ce;">
+                      <div class="container">
+                
+                        <!-- Grid row-->
+                        <div class="row py-4 d-flex align-items-center">
+                
+                          <!-- Grid column -->
+                          <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                            <h6 class="mb-0">Liên hệ chúng tôi tại</h6>
+                          </div>
+                          <!-- Grid column -->
+                
+                          <!-- Grid column -->
+                          <div class="col-md-6 col-lg-7 text-center text-md-right">
+                
+                            <!-- Facebook -->
+                            <a class="fb-ic" href="#">
+                              <i class="fab fa-facebook-f white-text mr-4"> </i>
+                            </a>
+                            <!-- Google +-->
+                            <a class="gplus-ic" href="#">
+                              <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                            </a>
+                              <!--Instagram-->
+                            <a class="ins-ic" href="#">
+                              <i class="fab fa-instagram white-text"> </i>
+                            </a>
+                
+                          </div>
+                          <!-- Grid column -->
+                
+                        </div>
+                        <!-- Grid row-->
+                
+                      </div>
+                    </div>
+                
+                    <!-- Footer Links -->
+                    <div class="container text-center text-md-left mt-5">
+                
+                      <!-- Grid row -->
+                      <div class="row mt-3">
+                
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                
+                          <!-- Content -->
+                          <h6 class="text-uppercase font-weight-bold">Team đồ án web No.41</h6>
+                          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                          <p>Đồ an báo điện tử của bộ môn phát triển ứng dụng web.</p>
+                
+                        </div>
+                        <!-- Grid column -->
+                
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                
+                          <!-- Links -->
+                          <h6 class="text-uppercase font-weight-bold">Về chúng tôi</h6>
+                          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                          <p>
+                            <a href="#!">Giới thiệu</a>
+                          </p>
+                          <p>
+                            <a href="#!">Khó khăn</a>
+                          </p>
+                          <p>
+                            <a href="#!">Thuận lợi</a>
+                          </p>
+                
+                        </div>
+                        <!-- Grid column -->
+                
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                
+                          <!-- Links -->
+                          <h6 class="text-uppercase font-weight-bold">Về đồ án</h6>
+                          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                          <p>
+                            <a href="#!">Giới thiệu</a>
+                          </p>
+                          <p>
+                            <a href="#!">Tiến độ</a>
+                          </p>
+                          <p>
+                            <a href="#!">Nguồn tham khảo</a>
+                          </p>
+                          <p>
+                            <a href="#!">Hướng dẫn</a>
+                          </p>
+                
+                        </div>
+                        <!-- Grid column -->
+                
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                
+                          <!-- Links -->
+                          <h6 class="text-uppercase font-weight-bold">Liên hệ</h6>
+                          <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                          <p>
+                            <i class="fas fa-home mr-3"></i> Trường Đại học Khoa học Tự nhiên TPHCM</p>
+                          <p>
+                            <i class="fas fa-envelope mr-3"></i> leonthaibao@gmail.com</p>
+                          <p>
+                            <i class="fas fa-phone mr-3"></i> 0789 578 259</p>
+                
+                
+                        </div>
+                        <!-- Grid column -->
+                
+                      </div>
+                      <!-- Grid row -->
+                
+                    </div>
+                    <!-- Footer Links -->
+                
+                </footer> 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <script src="/script.js"></script>

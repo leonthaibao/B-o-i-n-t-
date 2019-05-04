@@ -107,3 +107,48 @@
     }
     
 }
+
+#main-nav {
+    background-color: #4B64FF;
+    color: white;
+}
+
+.navbar {
+    margin-left: 100px;
+    margin-right: 100px;
+    color: white;
+    background-color: #4B64FF;
+}
+
+#header {
+    /*background:url(../) repeat-x;-
+    height:184px;
+    margin:15px 0 0;*/
+    /*background:url(../img/header2.png) repeat-x;*/
+    display: flex;
+    justify-content: space-between;
+    height: 75px;
+    /*background-color: #6451CE; */
+    margin-bottom: 20px;
+    margin-left: 50px;
+    margin-right: 50px;
+    
+}
+#news img{
+    width: 500px;
+    height: 75px;
+    margin-left: 10px;
+    margin-right:25px; 
+
+}
+
+.btn-light{
+    margin-bottom: 6px;
+}
+#btns{
+    margin-top: 20px;
+    margin-right: 65px;
+    width: 150px;
+    height: 50px;
+    background-color: #4B64FF;
+}
