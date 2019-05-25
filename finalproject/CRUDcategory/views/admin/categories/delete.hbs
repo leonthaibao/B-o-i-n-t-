@@ -1,0 +1,36 @@
+<div class="card">
+  <h5 class="card-header">Xóa chuyên mục</h5>
+  {{#if this.error}}
+        <div class="alert alert-warning" role="alert">
+            Invalid CategoryID, Try again@@@@@@@@@@@@@@
+        </div>
+  {{else}}
+    <div class="card-body">
+            <div class="alert alert-warning" role="alert">
+                Bạn có muốn xóa nội dung bên dưới
+            </div>
+            <form method="POST" action="/admin/categories/delete">
+            <div class="form-group">
+                    <label for="inputCategoryID">ID chuyên mục</label>
+                    <input readonly type="text" required="required" class="form-control" id="inputCategoryID" name="inputcateID" aria-describedby="emailHelp" autofocus placeholder="tên bài viết" value="{{this.category.cateID}}">
+                </div>
+                <div class="form-group">
+                    <label for="inputCategoryName">Tên chuyên mục</label>
+                    <input readonly type="text" required="required" class="form-control" id="inputCategoryName" name="inputcateName" aria-describedby="emailHelp" autofocus placeholder="tên bài viết" value="{{this.category.cateName}}">
+                </div>
+                <div class="form-group">
+                    <label for="inputPostCounter">Số bài viết</label>
+                    <input readonly type="number" required="required" class="form-control" id="inputPostCounter" name="inputpostCounter" placeholder="Số bài viêt"  value="{{this.category.postCounter}}">
+                </div>
+                <div class="form-group">
+                    <label for="inputCategoryLink">Link</label>
+                    <input readonly type="text" required="required" class="form-control" id="inputCategoryLink" name="inputcateLink" placeholder="link.."  value="{{this.category.cateLink}}">
+                </div>
+                <div class="form-group d-flex justify-content-between">
+                    <button type="submit" class="btn btn-danger"><i class="fas fa-check"></i>&nbsp; Xóa</button>
+                    <a role="button" href="/admin/categories" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
+                </div>
+            </form>
+    </div>
+  {{/if}}
+</div>
