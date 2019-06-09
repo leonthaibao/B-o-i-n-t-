@@ -1,0 +1,37 @@
+
+<div class="card mb-3" style="width: auto,">
+  <div class="card-header d-flex justify-content-between"><h2 class="text-success">Danh sách bài viết</h2>  <a class="btn btn-outline-success" href="/admin/posts/add" role="button"> <i class="fas fa-plus-circle fa-2x "></i></a></div>
+  <div class="card-body">
+    <div class="wrapper-editor">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col" class="text-center th-sm">STT</th>
+                    <th scope="col" class="text-center th-sm">Tên bài viết</th>
+                     <th scope="col" class="text-center th-sm">Trạng thái</th>
+                    <th scope="col" class="text-center th-sm">Chi tiết</th>
+                    <th scope="col" class="text-center th-sm">Thao tác</th>
+                </tr>
+            </thead>
+            <tbody>                           
+                {{#each this.posts}}
+                    <tr>
+                        <td class="text-center">{{postID}}</td>
+                        <td class="text-center">{{postName}}</td>
+                        <td class="text-center">{{postStatus}}</td>
+                        <td class="text-center">
+                            <a  class="btn btn-success btn-rounded btn-sm my-0" href="../posts/post/{{postLink}}" target="_blank">Xem chi tiết</a>
+                        </td>
+                        <td class="text-center">
+                            <a class="btn btn-rounded btn-primary btn-sm remove-first-tr d-inline" href="/admin/posts/update/{{postID}}" type="button"> <i class="fas fa-edit"></i></a>    
+                            <a class="btn btn-rounded btn-danger btn-sm remove-first-tr " href="/admin/posts/delete/{{postID}}" type="button"> <i class="fas fa-eraser"></i></a>              
+                        </td>                                  
+                    </tr> 
+                {{/each}}
+            </tbody>                                                             
+        </table>
+</div>
+
+
+  </div>
+</div>
