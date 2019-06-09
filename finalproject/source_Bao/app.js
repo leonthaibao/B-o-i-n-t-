@@ -1,17 +1,17 @@
 var express = require('express');
-var exphbs  = require('express-handlebars');
-var hbs_section = require('express-handlebars-sections');
+var morgan = require('morgan');
+
 
 var app = express();
+app.use(morgan('dev'));
 
-app.engine('hbs', exphbs({
-    defaultLayout: 'main.hbs',
-    layoutsDir: 'views/_layouts',
-    helpers: {
-            section: hbs_section()
-    }
-}));
-app.set('view engine', 'hbs');
+require('./middlewares/view-engine')(app);
+require('./middlewares/session')(app);
+require('./middlewares/passport')(app);
+
+app.use(express.urlencoded({extended:true }));
+app.use(express.json());
+
 
 app.get('/', (req,res) => { 
     res.render('home');

@@ -1,47 +1,57 @@
 {{#section 'js'}}
 <script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
-<script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.13.1/jquery
-$(document).ready(function() {
- 
-        //Khi bàn phím được nhấn và thả ra thì sẽ chạy phương thức này
-        $("#formDemo").validate({
-            rules: {
-                ho: "required",
-                ten: "required",
-                diachi: {
-                    required: true,
-                    minlength: 2
-                }
-            },
-            messages: {
-                ho: "Vui lòng nhập họ",
-                ten: "Vui lòng nhập tên",
-                diachi: {
-                    required: "Vui lòng nhập địa chỉ",
-                    minlength: "Địa chỉ ngắn vậy, chém gió ah?"
-                }
-            }
-        });
-    });
+<script src="http://ajax.aspnetcdn.com/ajax/jquery.validate/1.15.0/jquery.validate.min.js"></script>
+$(function() {
+		$('#form-login').validate({
+			rules : {
+				email : {
+					required : true,
+					email : true
+				},
+				password : {
+					required : true,
+					minlength : 8
+				}
+			},
+			messages : {
+				email : {
+					required : "Email không được để trống",
+					email : "Email không đúng định dạng",
+				},
+				password : {
+					required : "Mật khẩu không được để trống",
+					minlength : "Mật khẩu phải có ít nhất 8 ký tự"
+				}
+			},
+			submitHandler : function (form) {
+				//code in here
+			}
+
+		});
+	})
 {{/section}}
 
-<form method="get" accept-charset="utf-8" style="width:600px;margin: 0px auto;" id="formDemo">
-        <fieldset>
-            <legend>Demo jQuery Validation - ThienAnBlog.com</legend>
-            <div>
-                <label>Họ</label>
-                <input name="ho" type="text" placeholder="Vui lòng nhập họ" required>
-            </div>
-            <div>
-                <label>Tên</label>
-                <input name="ten" type="text" placeholder="Vui lòng nhập tên" required>
-            </div>
-            <div>
-                <label>Địa chỉ</label>
-                <input name="diachi" type="text" placeholder="Vui lòng nhập địa chỉ" required>
-            </div>
-            <button type="submit">Gửi</button>
-        </fieldset>
-    </form>
+<form method="POST" role="form" id="form-login">
+   <legend>Login</legend>
+   <div class="alert alert-danger error errorLogin" style="display: none;">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <p style="color:red;display: none;" class="error errorLogin"></p>
+   </div>
+   <div class="form-group">
+      <label for="">Email</label>
+      <input type="text" class="form-control" id="email" placeholder="email" name="email" value="">
+      <p style="color:red;display:none;" class="error errorEmail"></p>
+   </div>
+   <div class="form-group">
+      <label for="">Password</label>
+      <input type="password" class="form-control" id="password" placeholder="password" name="password">
+      <p style="color:red;display:none;" class="error errorPassword"></p>
+   </div>
+   <div class="form-group">
+      <input type="checkbox" name="remember"> Ghi nhớ
+   </div>
+   {!! csrf_field() !!}
+   <button type="submit" id="dang-nhap" class="btn btn-primary">Đăng nhập</button>
+</form>
 
     
