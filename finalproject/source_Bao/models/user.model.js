@@ -10,7 +10,7 @@ module.exports = {
   },
 
   singleByUserName: userName => {
-    return db.load(`select * from users where Username = '${userName}'`);
+    return db.load(`select * from users where Name = '${userName}'`);
   },
 
   add: entity => {
@@ -18,8 +18,8 @@ module.exports = {
   },
 
   update: entity => {
-    var id = entity.f_ID;
-    delete entity.f_ID;
+    var id = entity.ID;
+    delete entity.ID;
     return db.update('users', 'ID', entity, id);
   },
 

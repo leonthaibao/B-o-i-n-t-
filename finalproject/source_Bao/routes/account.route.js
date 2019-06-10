@@ -1,6 +1,7 @@
 var express = require('express');
-var brcypt = require('bcrypt');
+var bcrypt = require('bcrypt');
 var moment = require('moment');
+var passport =require('passport');
 var userModel = require('../models/user.model');
 
 var router = express.Router();
@@ -10,8 +11,8 @@ router.get('/register', (req,res,next)=>{
 })
 
 router.post('/register', (req,res,next)=>{
-    var saltRound = 10;
-    var hash = brcypt.hashSync(req.body.password,saltRound);
+    var saltRound = bcrypt.genSaltSync(10)
+    var hash = bcrypt.hashSync(req.body.password,saltRound);
 
     var entity = {
         Name: req.body.username,
@@ -23,8 +24,29 @@ router.post('/register', (req,res,next)=>{
     })
 })
 
+router.post('/login',(req,res,next)=>{
+    passport.authenticate('local', (err, user, info) => {
+        if (err)
+          return next(err);
+    
+        if (!user) {
+          return res.render('vwAccount/login', {
+            layout: false,
+            err_message: info.message
+          })
+        }
+    
+        req.logIn(user, err => {
+          if (err)
+            return next(err);
+    
+          return res.redirect('/');
+        });
+      })(req, res, next);
+})
+
 router.get('/login',(req,res,next)=>{
-    res.end('LOGIN');
+    res.render('vwAccount/login',{layout:false});
 })
 
 module.exports = router;
