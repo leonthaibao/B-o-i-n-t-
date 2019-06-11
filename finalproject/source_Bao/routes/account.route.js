@@ -3,6 +3,8 @@ var bcrypt = require('bcrypt');
 var moment = require('moment');
 var passport =require('passport');
 var userModel = require('../models/user.model');
+var auth = require('../middlewares/auth');
+var authlocals = require('../middlewares/auth-locals.mdw');
 
 var router = express.Router();
 
@@ -31,7 +33,7 @@ router.post('/login',(req,res,next)=>{
     
         if (!user) {
           return res.render('vwAccount/login', {
-            layout: false,
+            
             err_message: info.message
           })
         }
@@ -46,7 +48,16 @@ router.post('/login',(req,res,next)=>{
 })
 
 router.get('/login',(req,res,next)=>{
-    res.render('vwAccount/login',{layout:false});
+    res.render('vwAccount/login');
+})
+
+router.get('/profile',auth,(req,res,next)=>{
+  res.end('Profile');
+})
+
+router.post('/logout', auth,(req,res,next)=>{
+  req.logOut();
+  res.redirect('/account/login');
 })
 
 module.exports = router;
