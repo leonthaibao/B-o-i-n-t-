@@ -1,0 +1,26 @@
+<div class="card">
+  <h5 class="card-header">Thêm bài viết</h5>
+  <div class="card-body">
+        <form method="POST">
+            <div class="form-group">
+                <label for="inputName">Tên bài viết</label>
+                <input type="text"  required="required" class="form-control" id="inputName" name="inputpostName" aria-describedby="emailHelp" autofocus placeholder="Tên bài viết">
+            </div>
+            <div class="form-group">
+                <label for="combobox">Tình trạng bài viết</label>
+                <select  class="custom-select" id="combobox" name="inputpostStatus">
+                    <option value="draft">draft</option>
+                    <option value="publish">publish</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label for="inputLink">Link</label>
+                <input type="text"  required="required" class="form-control" id="inputLink" name="inputpostLink" placeholder="link..">
+            </div>
+            <div class="form-group d-flex justify-content-between">
+                <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>&nbsp; Thêm</button>
+                <a role="button" href="/admin/posts" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
+            </div>
+        </form>
+  </div>
+</div>
