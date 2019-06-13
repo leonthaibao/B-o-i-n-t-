@@ -1,0 +1,73 @@
+{{#section 'css'}}
+{{!-- <link rel="stylesheet" href="css/writer.css" type="text/css"> --}}
+<link rel="stylesheet" href="css/style.css" type="text/css">
+<script src="css/ckeditor/ckeditor.js"></script>
+{{/section}}
+
+<div class="container">
+    <form method="POST">
+        <div class="row">
+            <h3 style="width: 1200px;"> Viết bài viết mới của bạn : </h3>
+            <!-- write part-->
+
+            <div>
+                <textarea name="editor1" id="editor1" rows="10" cols="80">
+                Viết nội dung ở đây.
+            </textarea>
+                <script>
+                    // Replace the <textarea id="editor1"> with a CKEditor
+                    // instance, using default configuration.
+                    CKEDITOR.replace('editor1');
+                </script>
+            </div>
+            <div>
+                <!-- write part-->
+                <div name="frmMain">
+                    <table class="table-writer">
+                        <tr>
+                            <th colspan="2">Thông tin bài viết :</th>
+                        </tr>
+                        <tr>
+
+                            <td class=" font-weight-bold">Tiêu Đề :</td>
+
+                            <td><input class="writer-input" type="text" name="txtTitle"></td>
+                        </tr>
+
+                        <tr>
+
+                            <td class=" font-weight-bold">Tóm Tắt :</td>
+                            <td><input class="writer-input" type="text" name="txtSum"></td>
+                        </tr>
+
+                        <tr>
+
+                            <td class=" font-weight-bold">Chuyên Mục :</td>
+                            <td>
+                                <select name="cmbCM">
+                                    <option value="hải sản">Hải sản</option>
+                                    <option value="nông sản">Nông sản</option>
+                                </select>
+                            </td>
+                        </tr>
+
+                        <tr>
+
+                            <td class=" font-weight-bold">Nhãn :</td>
+                            <td><input class="writer-input" type="text" name="txtTag"></td>
+
+                        </tr>
+                        <tr>
+                            <td colspan="2">
+                                <button class="btn btn-success btn-rounded btn-sm my-0" type="submit" name="btnSubmit">
+                                    Gửi bài viết
+                                </button>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+
+            </div>
+
+    </form>
+</div>
