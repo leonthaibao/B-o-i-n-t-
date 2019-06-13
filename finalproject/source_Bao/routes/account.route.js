@@ -8,22 +8,40 @@ var authlocals = require('../middlewares/auth-locals.mdw');
 
 var router = express.Router();
 
+router.get('/is-available', (req,res,next)=>{
+  var username = req.query.username;
+  userModel.singleByUserName(username).then(rows =>{
+    if(rows.length > 0)
+    {
+      return res.json(false);
+    }
+    return res.json(true);
+  })
+    
+})
+
 router.get('/register', (req,res,next)=>{
-    res.render('vwAccount/register');
+    res.render('vwAccount/registertest');
 })
 
 router.post('/register', (req,res,next)=>{
     var saltRound = bcrypt.genSaltSync(10)
     var hash = bcrypt.hashSync(req.body.password,saltRound);
+    var dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY/MM/DD');
 
     var entity = {
-        Name: req.body.username,
+        Username: req.body.username,
         password: hash,
+        Email: req.body.emails,
+        BDay: dob,
+
     }
 
     userModel.add(entity).then(id => {
         res.redirect('/account/login');
     })
+    
+    
 })
 
 router.post('/login',(req,res,next)=>{
