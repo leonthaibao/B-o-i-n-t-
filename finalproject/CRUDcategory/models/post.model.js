@@ -14,5 +14,12 @@ module.exports = {
     },
     delete: (id)=>{
         return db.delete('posts','postID',id);
-    }
+    },
+    pageByCat: ( limit, offset) => {
+        return db.load(`select * from posts limit ${limit} offset ${offset}`);
+    },
+    
+    countByCat: () => {
+        return db.load(`select count(*) as total from posts`);
+    },
 }

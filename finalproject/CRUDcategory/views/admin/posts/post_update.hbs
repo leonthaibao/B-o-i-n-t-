@@ -17,14 +17,14 @@
                 <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><i class="fas fa-search" style="font-size: 24px;"></i></button>
             </form>
         </li>
-         <li class="nav-item">
+       <li class="nav-item">
             <a class="nav-link btn-outline-success " href="/admin" ><i class="fas fa-bars" ></i> Quản lý chuyên mục</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link btn-outline-success active" href="/admin/tags"  ><i class="fas fa-tags"></i> Quản lý tags</a>
+            <a class="nav-link btn-outline-success " href="/admin/tags"  ><i class="fas fa-tags"></i> Quản lý tags</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link btn-outline-success " href="/admin/posts" > <i class="far fa-newspaper"></i> Quản lý bài viết</a>
+            <a class="nav-link btn-outline-success active" href="/admin/posts" > <i class="far fa-newspaper"></i> Quản lý bài viết</a>
         </li>    
         <li class="nav-item">
             <a class="nav-link btn-outline-success " href="/admin/users"  ><i class="fas fa-users"></i> Quản lý danh sách người dùng</a>
@@ -57,27 +57,40 @@
 
                     
                     <br>
-                        <h5 class="card-header">Thêm tag</h5>
-                        <div class="card-body">
-                                <form method="POST">
+                        <h5 class="card-header">Cập nhật bài viết</h5>
+                        {{#if this.error}}
+                                <div class="alert alert-warning" role="alert">
+                                    Invalid postID, Try again@@@@@@@@@@@@@@
+                                </div>
+                        {{else}}
+                            <div class="card-body">
+                                    <form method="POST" action="/admin/posts/update">
                                     <div class="form-group">
-                                        <label for="inputName">Tên tag</label>
-                                        <input type="text"  required="required" class="form-control" id="inputName" name="inputtagName" autofocus placeholder="Tên tag">
-                                    </div>
+                                            <label for="inputID">ID tag</label>
+                                            <input readonly type="text" required="required" class="form-control" id="inputID" name="inputpostID" aria-describedby="emailHelp" autofocus placeholder="Tag ID" value="{{this.post.postID}}">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputName">Tên tag</label>
+                                            <input type="text" required="required" class="form-control" id="inputName" name="inputpostName" aria-describedby="emailHelp" autofocus placeholder="Tên tag" value="{{this.post.postName}}">
+                                        </div>
                                     <div class="form-group">
-                                        <label for="inputPostCounter">Số bài viết</label>
-                                        <input type="number"  required="required" class="form-control" id="inputSoBaiViet" name="inputtagSoBaiViet" placeholder="Số bài viêt">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputLink">Link</label>
-                                        <input type="text"  required="required" class="form-control" id="inputLink" name="inputtagLink" placeholder="link..">
-                                    </div>
-                                    <div class="form-group d-flex justify-content-between">
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>&nbsp; Thêm</button>
-                                        <a role="button" href="/admin/tags" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
-                                    </div>
-                                </form>
-                        </div>
+                                            <label for="combobox">Tình trạng bài viết</label>
+                                            <select  class="custom-select" id="combobox" name="inputpostStatus">
+                                                <option value="draft">draft</option>
+                                                <option value="publish">publish</option>
+                                            </select>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="inputLink">Link</label>
+                                            <input type="text" required="required" class="form-control" id="inputLink" name="inputpostLink" placeholder="link.."  value="{{this.post.postLink}}">
+                                        </div>
+                                        <div class="form-group d-flex justify-content-between">
+                                            <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>&nbsp; Sửa</button>
+                                            <a role="button" href="/admin/posts" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
+                                        </div>
+                                    </form>
+                            </div>
+                        {{/if}}
                     {{!-- //end --}}
             </div>
         </div>
@@ -208,3 +221,18 @@
                 
         </footer>           
 </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

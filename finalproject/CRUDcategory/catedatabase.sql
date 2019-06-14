@@ -36,3 +36,44 @@ create table posts
 );
 insert into `posts` values(1,N'Chờ cơ hội tôm Việt Nam bức phá tại Mỹ','draft','sthsth');
 insert into `posts` values(2,N'ststh','publish','sthsth');
+
+
+
+create table writerusers
+(
+	`userID` int(11) NOT NULL auto_increment,
+    `userName` nvarchar(50) NOT NULL,
+    constraint PK_WRITERUSERS primary key (`userID`)
+);
+insert into `writerusers` values (1,N'Nguyễn Văn A');
+insert into `writerusers` values (2,N'Nguyễn Văn B');
+
+drop table editorusers	;
+create table editorusers
+(
+	`userID` int(11) NOT NULL auto_increment,
+    `userName` nvarchar(50) NOT NULL,
+	`userCateID`  INT(11) NOT NULL,
+    constraint PK_EDITORUSERS primary key (`userID`)
+);
+alter table editorusers
+add constraint  fk_editorusers_category
+foreign key (`userCateID`)
+references category(`cateID`);
+insert into `editorusers` values (1,N'Lê Đ',1);
+insert into `editorusers` values (2,N'Lê Sds',2);
+
+
+
+
+create table subscriberusers
+(
+	`userID` int(11) NOT NULL auto_increment,
+    `userName` nvarchar(50) NOT NULL,
+	`userExpiredDay`  date,
+    constraint PK_subscriberusers primary key (`userID`)
+);
+insert into `subscriberusers` values (1,N'Lê Đ','2019-6-14');
+insert into `subscriberusers` values (2,N'Lê Sds','2019-6-14');
+
+

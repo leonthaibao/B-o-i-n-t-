@@ -1,9 +1,23 @@
 {{#section 'css'}}
     <link rel="stylesheet" href="/css/styleadmin.css" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
 {{/section}}
 
 
+{{#section 'js'}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+    <script>
+        $(function () {
 
+            $('#inputExDay').datetimepicker({
+            format: 'd/m/Y',
+            timepicker: false,
+            mask: true,
+            });
+        })
+    </script>
+{{/section}}
 
 <div class="container">
 
@@ -17,18 +31,18 @@
                 <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><i class="fas fa-search" style="font-size: 24px;"></i></button>
             </form>
         </li>
-         <li class="nav-item">
+           <li class="nav-item">
             <a class="nav-link btn-outline-success " href="/admin" ><i class="fas fa-bars" ></i> Quản lý chuyên mục</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link btn-outline-success active" href="/admin/tags"  ><i class="fas fa-tags"></i> Quản lý tags</a>
+            <a class="nav-link btn-outline-success " href="/admin/tags"  ><i class="fas fa-tags"></i> Quản lý tags</a>
         </li>
         <li class="nav-item">
             <a class="nav-link btn-outline-success " href="/admin/posts" > <i class="far fa-newspaper"></i> Quản lý bài viết</a>
         </li>    
         <li class="nav-item">
-            <a class="nav-link btn-outline-success " href="/admin/users"  ><i class="fas fa-users"></i> Quản lý danh sách người dùng</a>
-        </li>       
+            <a class="nav-link btn-outline-success active" href="/admin/users"  ><i class="fas fa-users"></i> Quản lý danh sách người dùng</a>
+        </li>            
     </div>
 
     <div class="content">
@@ -54,30 +68,53 @@
         <br>
         <div class="view-content">
             <div class="card">
-
-                    
                     <br>
-                        <h5 class="card-header">Thêm tag</h5>
+                    <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/users">Danh sách Writer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/admin/users/subscriber">Danh sách Subscriber</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/users/editor">Danh sách Editor</a>
+                        </li>
+                    </ul>
+                    <br>
+                   <h5 class="card-header">Xóa độc giả</h5>
+                    {{#if this.error}}
+                            <div class="alert alert-warning" role="alert">
+                                Invalid tagID, Try again@@@@@@@@@@@@@@
+                            </div>
+                    {{else}}
                         <div class="card-body">
-                                <form method="POST">
-                                    <div class="form-group">
-                                        <label for="inputName">Tên tag</label>
-                                        <input type="text"  required="required" class="form-control" id="inputName" name="inputtagName" autofocus placeholder="Tên tag">
+                                  <div class="alert alert-warning" role="alert">
+                                    Bạn có muốn xóa nội dung bên dưới
+                                </div>
+                                <form method="POST" action="/admin/users/subscriber/delete">
+                                <div class="form-group">
+                                        <label for="inputID">ID độc giả</label>
+                                        <input readonly type="text" required="required" class="form-control" id="inputID" name="inputsubscriberuserID" aria-describedby="emailHelp" autofocus placeholder="ID độc giả" value="{{this.subscriberuser.userID}}">
+                                    </div>
+                                   <div class="form-group">
+                                        <label for="inputName">Tên đọc giả</label>
+                                        <input readonly type="text"  required="required" class="form-control" id="inputName" name="inputsubscriberuserName" autofocus placeholder="Tên độc giả" value="{{this.subscriberuser.userName}}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputPostCounter">Số bài viết</label>
-                                        <input type="number"  required="required" class="form-control" id="inputSoBaiViet" name="inputtagSoBaiViet" placeholder="Số bài viêt">
+                                        <label for="inputExDay">Expired day</label>
+                                        <input readonly type="text" class="form-control" id="inputExDay" name="inputsubscriberuserExpiredDay"  value="{{this.subscriberuser.userExpiredDay}}">
                                     </div>
-                                    <div class="form-group">
+                                    {{!-- <div class="form-group">
                                         <label for="inputLink">Link</label>
                                         <input type="text"  required="required" class="form-control" id="inputLink" name="inputtagLink" placeholder="link..">
-                                    </div>
+                                    </div> --}}
                                     <div class="form-group d-flex justify-content-between">
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>&nbsp; Thêm</button>
-                                        <a role="button" href="/admin/tags" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>&nbsp; Xóa</button>
+                                        <a role="button" href="/admin/users/subscriber" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
                                     </div>
                                 </form>
                         </div>
+                    {{/if}}
                     {{!-- //end --}}
             </div>
         </div>
@@ -208,3 +245,6 @@
                 
         </footer>           
 </div>
+
+
+

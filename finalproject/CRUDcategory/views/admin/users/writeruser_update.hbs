@@ -17,17 +17,17 @@
                 <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><i class="fas fa-search" style="font-size: 24px;"></i></button>
             </form>
         </li>
-         <li class="nav-item">
+        <li class="nav-item">
             <a class="nav-link btn-outline-success " href="/admin" ><i class="fas fa-bars" ></i> Quản lý chuyên mục</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link btn-outline-success active" href="/admin/tags"  ><i class="fas fa-tags"></i> Quản lý tags</a>
+            <a class="nav-link btn-outline-success " href="/admin/tags"  ><i class="fas fa-tags"></i> Quản lý tags</a>
         </li>
         <li class="nav-item">
             <a class="nav-link btn-outline-success " href="/admin/posts" > <i class="far fa-newspaper"></i> Quản lý bài viết</a>
         </li>    
         <li class="nav-item">
-            <a class="nav-link btn-outline-success " href="/admin/users"  ><i class="fas fa-users"></i> Quản lý danh sách người dùng</a>
+            <a class="nav-link btn-outline-success active" href="/admin/users"  ><i class="fas fa-users"></i> Quản lý danh sách người dùng</a>
         </li>       
     </div>
 
@@ -54,30 +54,42 @@
         <br>
         <div class="view-content">
             <div class="card">
-
-                    
                     <br>
-                        <h5 class="card-header">Thêm tag</h5>
+                   <ul class="nav nav-tabs">
+                        <li class="nav-item">
+                            <a class="nav-link active" href="/admin/users/writer">Danh sách Writer</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link " href="/admin/users/subscriber">Danh sách Subscriber</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/admin/users/editor">Danh sách Editor</a>
+                        </li>
+                    </ul>
+                    <br>
+                    <h5 class="card-header">Cập nhật phóng viên</h5>
+                    {{#if this.error}}
+                            <div class="alert alert-warning" role="alert">
+                                Invalid tagID, Try again@@@@@@@@@@@@@@
+                            </div>
+                    {{else}}
                         <div class="card-body">
-                                <form method="POST">
-                                    <div class="form-group">
-                                        <label for="inputName">Tên tag</label>
-                                        <input type="text"  required="required" class="form-control" id="inputName" name="inputtagName" autofocus placeholder="Tên tag">
+                                <form method="POST" action="/admin/users/writer/update">
+                                <div class="form-group">
+                                        <label for="inputID">ID phóng viên</label>
+                                        <input readonly type="text" required="required" class="form-control" id="inputID" name="inputwriteruserID" aria-describedby="emailHelp" autofocus placeholder="Tag phóng viên" value="{{this.user.userID}}">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputPostCounter">Số bài viết</label>
-                                        <input type="number"  required="required" class="form-control" id="inputSoBaiViet" name="inputtagSoBaiViet" placeholder="Số bài viêt">
-                                    </div>
-                                    <div class="form-group">
-                                        <label for="inputLink">Link</label>
-                                        <input type="text"  required="required" class="form-control" id="inputLink" name="inputtagLink" placeholder="link..">
+                                        <label for="inputName">Tên phóng viên</label>
+                                        <input type="text" required="required" class="form-control" id="inputName" name="inputwriteruserName" aria-describedby="emailHelp" autofocus placeholder="Tên phóng viên" value="{{this.user.userName}}">
                                     </div>
                                     <div class="form-group d-flex justify-content-between">
-                                        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>&nbsp; Thêm</button>
-                                        <a role="button" href="/admin/tags" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>&nbsp; Sửa</button>
+                                        <a role="button" href="/admin" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
                                     </div>
                                 </form>
                         </div>
+                    {{/if}}
                     {{!-- //end --}}
             </div>
         </div>
@@ -208,3 +220,6 @@
                 
         </footer>           
 </div>
+
+
+

@@ -21,10 +21,10 @@
             <a class="nav-link btn-outline-success " href="/admin" ><i class="fas fa-bars" ></i> Quản lý chuyên mục</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link btn-outline-success active" href="/admin/tags"  ><i class="fas fa-tags"></i> Quản lý tags</a>
+            <a class="nav-link btn-outline-success " href="/admin/tags"  ><i class="fas fa-tags"></i> Quản lý tags</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link btn-outline-success " href="/admin/posts" > <i class="far fa-newspaper"></i> Quản lý bài viết</a>
+            <a class="nav-link btn-outline-success active" href="/admin/posts" > <i class="far fa-newspaper"></i> Quản lý bài viết</a>
         </li>    
         <li class="nav-item">
             <a class="nav-link btn-outline-success " href="/admin/users"  ><i class="fas fa-users"></i> Quản lý danh sách người dùng</a>
@@ -57,24 +57,27 @@
 
                     
                     <br>
-                        <h5 class="card-header">Thêm tag</h5>
+                         <h5 class="card-header">Thêm bài viết</h5>
                         <div class="card-body">
                                 <form method="POST">
                                     <div class="form-group">
-                                        <label for="inputName">Tên tag</label>
-                                        <input type="text"  required="required" class="form-control" id="inputName" name="inputtagName" autofocus placeholder="Tên tag">
+                                        <label for="inputName">Tên bài viết</label>
+                                        <input type="text"  required="required" class="form-control" id="inputName" name="inputpostName" aria-describedby="emailHelp" autofocus placeholder="Tên bài viết">
                                     </div>
                                     <div class="form-group">
-                                        <label for="inputPostCounter">Số bài viết</label>
-                                        <input type="number"  required="required" class="form-control" id="inputSoBaiViet" name="inputtagSoBaiViet" placeholder="Số bài viêt">
+                                        <label for="combobox">Tình trạng bài viết</label>
+                                        <select  class="custom-select" id="combobox" name="inputpostStatus">
+                                            <option value="draft">draft</option>
+                                            <option value="publish">publish</option>
+                                        </select>
                                     </div>
                                     <div class="form-group">
                                         <label for="inputLink">Link</label>
-                                        <input type="text"  required="required" class="form-control" id="inputLink" name="inputtagLink" placeholder="link..">
+                                        <input type="text"  required="required" class="form-control" id="inputLink" name="inputpostLink" placeholder="link..">
                                     </div>
                                     <div class="form-group d-flex justify-content-between">
                                         <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>&nbsp; Thêm</button>
-                                        <a role="button" href="/admin/tags" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
+                                        <a role="button" href="/admin/posts" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
                                     </div>
                                 </form>
                         </div>
@@ -208,3 +211,13 @@
                 
         </footer>           
 </div>
+
+
+
+
+
+
+
+
+
+
