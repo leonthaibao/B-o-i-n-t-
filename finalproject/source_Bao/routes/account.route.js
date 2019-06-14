@@ -102,9 +102,9 @@ router.get('/is-crrpassword',auth, (req,res,next)=>{
   
   if(bcrypt.compareSync(password,user.PASSWORD))
   {
-    res.json(true);
+    return res.json(true);
   }
-  res.json(false);
+  return res.json(false);
     
 })
 router.post('/logout', auth,(req,res,next)=>{
