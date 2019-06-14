@@ -4,11 +4,13 @@ var writerModel = require('../models/writer.model');
 
 
 
-router.get('/writer', (req,res,next)=>{
-    res.render('home');
-})
-router.post('/writer', (req, res, next) => {
-    // res.end('admin categories add');
+router.get('/',(req,res)=>{
+    res.render('vwWriter/writer');
+});
+
+
+router.post('/', (req, res) => {
+    
     console.log(req.body);
     // var pp = {
     //     noidung = req.body.editor1,
@@ -24,8 +26,19 @@ router.post('/writer', (req, res, next) => {
     //     var noidung = req.body.cmbCM;
     //     var noidung = req.body.txtTag;
     // }
-  
-    writerModel.add(req.body);
 
-    res.end('...');
+    // var entity = {
+    //     txtPlace=req.body.txtPlace
+    // }
+    // writerModel.add(entity)
+    // .then(id => {
+    //     res.render('vwWriter/writer');
+    // })
+    // .catch(err => {
+    //     console.log(err)
+    // })
+    res.end('...')
+  
 });
+
+module.exports = router;

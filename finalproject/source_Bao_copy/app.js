@@ -13,10 +13,15 @@ app.use(express.urlencoded({extended:true }));
 app.use(express.json());
 
 
+app.set('view engine', 'hbs');
+ 
+
 app.get('/', (req,res) => { 
     res.render('home');
 });
+
 app.use('/writer',require('./routes/writer.route'));
+app.use('/editor',require('./routes/editor.route'));
 
 app.use('/account',require('./routes/account.route'));
 
