@@ -25,8 +25,10 @@ router.get('/register', (req,res,next)=>{
 })
 
 router.post('/register', (req,res,next)=>{
-    var saltRound = bcrypt.genSaltSync(10)
+    var saltRound = bcrypt.genSaltSync(5);
     var hash = bcrypt.hashSync(req.body.password,saltRound);
+
+    var ret = bcrypt.compareSync(req.body.password,hash);
     var dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY/MM/DD');
 
     var entity = {
@@ -69,10 +71,42 @@ router.get('/login',(req,res,next)=>{
     res.render('vwAccount/login');
 })
 
-router.get('/profile',auth,(req,res,next)=>{
-  res.end('Profile');
+router.get('/forget',auth,(req,res,next)=>{
+  res.render('vwAccount/forgot');
 })
 
+router.post('/forget',auth,(req,res,next)=>{
+  var user = req.user;
+
+  var saltRound = bcrypt.genSaltSync(5);
+  var hash = bcrypt.hashSync(req.body.new,saltRound);
+
+  var entity = {
+        ID: user.ID,
+        Username: user.Username,
+        PASSWORD: hash,
+        Email: user.Email,
+        BDay: user.BDay,
+  }
+  userModel.update(entity).then(n => {
+    res.redirect('/');
+  }).catch(err => {
+    console.log(err);
+    res.end('error occured.')
+  });
+})
+
+router.get('/is-crrpassword',auth, (req,res,next)=>{
+  var user = req.user;
+  var password = req.query.old;
+  
+  if(bcrypt.compareSync(password,user.PASSWORD))
+  {
+    res.json(true);
+  }
+  res.json(false);
+    
+})
 router.post('/logout', auth,(req,res,next)=>{
   req.logOut();
   res.redirect('/account/login');
