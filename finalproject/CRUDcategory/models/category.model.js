@@ -14,5 +14,15 @@ module.exports = {
     },
     delete: (id)=>{
         return db.delete('category','cateID',id);
-    }
+    },
+    selectname:()=>{
+        return db.load('select cateID,cateName from category');
+    },
+    pageByCat: ( limit, offset) => {
+        return db.load(`select * from category limit ${limit} offset ${offset}`);
+    },
+    
+    countByCat: () => {
+        return db.load(`select count(*) as total from category`);
+    },
 }

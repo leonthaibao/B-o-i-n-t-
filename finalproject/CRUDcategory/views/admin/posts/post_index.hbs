@@ -17,18 +17,18 @@
                 <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><i class="fas fa-search" style="font-size: 24px;"></i></button>
             </form>
         </li>
-        <li class="nav-item">
-            <a class="nav-link btn-outline-success" href="admin-category.html" ><i class="fas fa-bars" ></i> Quản lý chuyên mục</a>
+       <li class="nav-item">
+            <a class="nav-link btn-outline-success " href="/admin" ><i class="fas fa-bars" ></i> Quản lý chuyên mục</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link btn-outline-success" href="admin-tag.html"  ><i class="fas fa-tags"></i> Quản lý tags</a>
+            <a class="nav-link btn-outline-success " href="/admin/tags"  ><i class="fas fa-tags"></i> Quản lý tags</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link btn-outline-success active" href="admin-post.html" > <i class="far fa-newspaper"></i> Quản lý bài viết</a>
+            <a class="nav-link btn-outline-success active" href="/admin/posts" > <i class="far fa-newspaper"></i> Quản lý bài viết</a>
         </li>    
         <li class="nav-item">
-            <a class="nav-link btn-outline-success" href="admin-user.html"  ><i class="fas fa-users"></i> Quản lý danh sách người dùng</a>
-        </li>          
+            <a class="nav-link btn-outline-success " href="/admin/users"  ><i class="fas fa-users"></i> Quản lý danh sách người dùng</a>
+        </li>       
     </div>
 
     <div class="content">
@@ -53,7 +53,7 @@
         </div>
         <br>
         <div class="view-content">
-            <div class="wrapper-editor d-flex justify-content-center align-items-center">
+            <div class="card">
 
                     
                     <br>
@@ -92,7 +92,34 @@
 
 
                         </div>
+                        {{!-- endddddddddddddd --}}
+                        <div class="row">
+                            <div class="col-sm-12">
+                                <nav aria-label="...">
+                                <ul class="pagination   d-flex justify-content-center">
+                                    <li class="page-item disabled">
+                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                    </li>
+                                    {{#each this.pages}}
+                                    {{#if active}}
+                                    <li class="page-item active" aria-current="page">
+                                    <a class="page-link" href="javascript:;">{{value}} <span class="sr-only">(current)</span></a>
+                                    </li>
+                                    {{else}}
+                                    <li class="page-item">
+                                    <a class="page-link" href="?page={{value}}">{{value}}</a>
+                                    </li>
+                                    {{/if}}
+                                    {{/each}}
+                                    <li class="page-item">
+                                    <a class="page-link" href="#">Next</a>
+                                    </li>
+                                </ul>
+                                </nav>
+                            </div>
                         </div>
+                        {{!-- endddddddddddddddddd --}}
+                    </div>
 
             </div>
         </div>

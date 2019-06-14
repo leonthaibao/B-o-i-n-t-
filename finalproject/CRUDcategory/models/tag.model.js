@@ -14,5 +14,12 @@ module.exports = {
     },
     delete: (id)=>{
         return db.delete('tags','tagID',id);
-    }
+    },
+    pageByCat: ( limit, offset) => {
+        return db.load(`select * from tags limit ${limit} offset ${offset}`);
+    },
+    
+    countByCat: () => {
+        return db.load(`select count(*) as total from tags`);
+    },
 }

@@ -20,9 +20,11 @@ app.set('view engine', 'hbs');
 app.get('/',(req,res)=>{
     res.render('home.hbs');
 })
-app.use('/admin/categories', require('./routes/admin/category.route'));
-app.use('/admin/tags', require('./routes/admin/tag.route'));
-app.use('/admin/posts', require('./routes/admin/post.route'));
+app.use('/admin', require('./routes/admin/admin.route'));
+// app.use('/admin/users', require('./routes/admin/user.route'));
+// app.use('/admin/categories', require('./routes/admin/category.route'));
+// app.use('/admin/tags', require('./routes/admin/tag.route'));
+// app.use('/admin/posts', require('./routes/admin/post.route'));
 app.listen(3000,()=>{
     console.log('server is running at http://localhost:3000');
 })
