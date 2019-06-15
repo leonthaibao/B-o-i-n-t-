@@ -29,6 +29,7 @@ app.use((req,res,next) =>{
   });
 
 app.use('/account',require('./routes/account.route'));
+app.use('/admin',require('./routes/admin/admin.route'));
 
 app.use(express.static('public'));
 

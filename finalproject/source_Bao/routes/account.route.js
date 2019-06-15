@@ -25,8 +25,10 @@ router.get('/register', (req,res,next)=>{
 })
 
 router.post('/register', (req,res,next)=>{
-    var saltRound = bcrypt.genSaltSync(10)
+    var saltRound = bcrypt.genSaltSync(5);
     var hash = bcrypt.hashSync(req.body.password,saltRound);
+
+    var ret = bcrypt.compareSync(req.body.password,hash);
     var dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY/MM/DD');
 
     var entity = {
@@ -69,13 +71,71 @@ router.get('/login',(req,res,next)=>{
     res.render('vwAccount/login');
 })
 
-router.get('/profile',auth,(req,res,next)=>{
-  res.end('Profile');
+router.get('/forget',auth,(req,res,next)=>{
+  res.render('vwAccount/forgot');
 })
 
+router.post('/forget',auth,(req,res,next)=>{
+  var user = req.user;
+
+  var saltRound = bcrypt.genSaltSync(5);
+  var hash = bcrypt.hashSync(req.body.new,saltRound);
+
+  var entity = {
+        ID: user.ID,
+        Username: user.Username,
+        PASSWORD: hash,
+        Email: user.Email,
+        BDay: user.BDay,
+  }
+  userModel.update(entity).then(n => {
+    res.redirect('/');
+  }).catch(err => {
+    console.log(err);
+    res.end('error occured.')
+  });
+})
+
+router.get('/is-crrpassword',auth, (req,res,next)=>{
+  var user = req.user;
+  var password = req.query.old;
+  
+  if(bcrypt.compareSync(password,user.PASSWORD))
+  {
+    return res.json(true);
+  }
+  return res.json(false);
+    
+})
 router.post('/logout', auth,(req,res,next)=>{
   req.logOut();
   res.redirect('/account/login');
+})
+
+router.get('/profile',auth,(req,res,next)=>{
+  var dob = moment(req.user, 'YYYY/MM/DD').format('DD/MM/YYYY');
+  var User = req.user;
+  User.BDay = dob;
+  res.render('vwAccount/profile',{
+    user: User,
+  });
+
+})
+
+router.post('/profile',auth,(req,res,next)=>{
+  var user=req.user;
+  var dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY/MM/DD');
+  var entity = {
+        ID: user.ID,
+        Email: req.body.emails,
+        BDay: dob,
+  }
+  userModel.update(entity).then(n => {
+    res.redirect('/');
+  }).catch(err => {
+    console.log(err);
+    res.end('error occured.')
+  });
 })
 
 module.exports = router;
