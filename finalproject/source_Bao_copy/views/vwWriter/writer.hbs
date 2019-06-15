@@ -17,9 +17,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css"
         integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
 
-    <link rel="stylesheet" href="css/writer.css" type="text/css"> --}}
-    <link rel="stylesheet" href="css/style.css" type="text/css">
-    <script src="css/ckeditor/ckeditor.js"></script>
+   
 
     <!-- script -->
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
@@ -27,8 +25,9 @@
         crossorigin="anonymous"></script>
 
     <!--CSS file-->
-    <link rel="stylesheet" href="css/editor.css" type="text/css">
-
+    <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" href="/css/writer.css" type="text/css">    
+    <script src="/css/ckeditor/ckeditor.js"></script>
 </head>
 
 <body>
@@ -37,7 +36,7 @@
 
         <div class="menu">
 
-            <a href="index.html"><img class="image" src="img/breaknew.png"></a>
+            <a href="index.html"><img class="image" src="/img/breaknew.png"></a>
 
             <li class="nav-item">
                 <form class="form-inline my-2 my-lg-0">
@@ -47,21 +46,14 @@
                 </form>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn-outline-success active"><i class="fas fa-bars"></i>
-                    Quản lý danh mục</a>
-            </li>
-            {{!-- <li class="nav-item">
-                <a class="nav-link btn-outline-success" href="admin-tag.html"><i class="fas fa-tags"></i> something
-                    later</a>
+                <a class="nav-link btn-outline-success " href="#"><i class="fas fa-list-alt"></i>
+                    danh sách bài viết</a>
             </li>
             <li class="nav-item">
-                <a class="nav-link btn-outline-success" href="admin-post.html"> <i class="far fa-newspaper"></i>
-                    something later</a>
+                <a class="nav-link btn-outline-success" href="/writer/writing"><i class="far fa-edit"></i> 
+                    viết bài mới</a>
             </li>
-            <li class="nav-item">
-                <a class="nav-link btn-outline-success" href="admin-user.html"><i class="fas fa-users"></i> something
-                    later</a>
-            </li> --}}
+           
         </div>
         <div class="container">
             <!-- container 2 -->
@@ -74,7 +66,7 @@
                 </a>
             </div>
             <br>
-            {{!-- phan noi dung --}}
+{{!-- phan noi dung --}}
 
 
 
@@ -86,7 +78,7 @@
                         <!-- write part-->
 
                         <div>
-                            <textarea name="txtPlace" id="editor1" rows="10" cols="80">
+                            <textarea name="editor1" id="editor1" rows="10" cols="80">
 
             </textarea>
                             <script>
@@ -106,20 +98,20 @@
 
                                         <td class=" font-weight-bold">Tiêu Đề :</td>
 
-                                        <td><input class="writer-input" type="text" name="txtTitle"></td>
+                                        <td><input class="writer-input" type="text" name="tieuDe"></td>
                                     </tr>
 
                                     <tr>
 
                                         <td class=" font-weight-bold">Tóm Tắt :</td>
-                                        <td><input class="writer-input" type="text" name="txtSum"></td>
+                                        <td><input class="writer-input" type="text" name="tomTat"></td>
                                     </tr>
 
                                     <tr>
 
                                         <td class=" font-weight-bold">Chuyên Mục :</td>
                                         <td>
-                                            <select name="cmbCM">
+                                            <select name="chuyenMuc">
                                                 <option value="hải sản">Hải sản</option>
                                                 <option value="nông sản">Nông sản</option>
                                             </select>
@@ -129,13 +121,15 @@
                                     <tr>
 
                                         <td class=" font-weight-bold">Nhãn :</td>
-                                        <td><input class="writer-input" type="text" name="txtTag"></td>
+                                        <td><input class="writer-input" type="text" name="Tag"></td>
 
                                     </tr>
+                                    
                                     <tr>
+                                        <input hidden type="text" name="nguoiGui" value="teo123">
+                                        <input hidden type="text" name="trangThai" value="đang chờ">
                                         <td colspan="2">
-                                            <button class="btn btn-success btn-rounded btn-sm my-0" type="submit"
-                                                name="btnSubmit">
+                                            <button class="btn btn-success btn-rounded btn-sm my-0" type="submit">
                                                 Gửi bài viết
                                             </button>
                                         </td>
@@ -148,8 +142,7 @@
                 </form>
             </div>
 
-
-            {{!-- end phan noi dung --}}
+{{!-- end phan noi dung --}}
         </div> <!-- container 2 -->
     </div><!-- /container 1 -->
 

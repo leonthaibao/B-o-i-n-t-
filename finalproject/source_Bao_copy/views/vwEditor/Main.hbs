@@ -21,7 +21,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
+<script src="jquery-3.4.0.min.js"></script>
     <!--CSS file-->
     <link rel="stylesheet" href="css/editor.css" type="text/css">
     {{!-- <link rel="stylesheet" href="css/style.css" type="text/css"> --}}
@@ -91,16 +91,23 @@
                     <tbody>
                         {{#each this.postdetail}}
                         <tr>
-                            <th scope="row">{{STT}}</th>
+                            <th scope="row">{{idPost}}</th>
                             <td>{{nguoiGui}}</td>
                             <td>{{chuyenMuc}}</td>
                             <td>{{Tag}}</td>
                             <td>{{tieuDe}}</td>
-                            <td><a class="btn btn-success btn-rounded btn-sm my-0" href="/editor/edit/{{idPost}}"
+                            <td>
+                                <form method="POST" action="/editor/update">
+                                <input hidden type="text" name="idPost" value="{{idPost}}">
+                                <input hidden type="text" name="trangThai" value="từ chối">
+                                <a class="btn btn-success btn-rounded btn-sm my-0" href="/editor/edit/{{idPost}}"
                                     target="_blank">Phê
-                                    duyệt</a> <a class="btn btn-success btn-rounded btn-sm my-0" href="#" target="_blank">Từ
-                                    chối</a> <a class="btn btn-success btn-rounded btn-sm my-0" target="_blank"
-                                    href="/editor/view/{{idPost}}">Xem bài viết</a> </td>
+                                    duyệt</a> <button type="submit" class="btn btn-success btn-rounded btn-sm my-0" href="#" target="_blank">Từ
+                                    chối</button> 
+                                    <a class="btn btn-success btn-rounded btn-sm my-0" target="_blank"
+                                    href="/editor/view/{{idPost}}">Xem bài viết</a>
+                                </form>
+                                 </td>
                         </tr>
                         {{/each}}
                     </tbody>

@@ -2,7 +2,16 @@ var db = require('../utils/db');
 
 module.exports = {
   all: () => {
-    return db.load('select * from postdetail');
+    
+    return db.load(`select * from postdetail `);
+  },
+  // all2: () => {
+  //   var statE = 'đang chờ',
+  //   return db.load(`select * from postdetail where trangThai = ${stateE}`);
+  // },
+
+  single2: id => {
+    return db.load(`select * from postdetail where trangThai = '${id}'`);
   },
 
   single: id => {
@@ -19,8 +28,12 @@ module.exports = {
 
   update: entity => {
       var a = entity.chuyenMuc;
-    return db.update('postdetail', 'chuyenMuc', entity,a);
+    return db.update('postdetail','idPost', entity);
   },
+  updateDenied: entity => {
+    var a = entity.chuyenMuc;
+  return db.update('postdetail', 'idPost', entity);
+},
 
   delete: id => {
     return db.delete('users', 'ID', id);

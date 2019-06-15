@@ -1,12 +1,13 @@
 var express = require('express');
 var router = express.Router();
 var editorModel = require('../models/editor.model');
-
+var sanitizeHtml = require('sanitize-html');
 
 
 router.get('/',(req,res)=>{
-    var p = editorModel.all();
-    p.then(row =>{
+    var statE = 'đang chờ';
+    editorModel.single2(statE)
+    .then(row =>{
          //console.log(rows);
          res.render('vwEditor/Main',{
              postdetail : row
@@ -61,8 +62,10 @@ router.get('/view/:id',(req,res)=>{
 
 
 router.post('/update', (req, res) => {
+    console.log(req.body)
     editorModel.update(req.body).then(n => {
       res.redirect('/editor');
+      
     }).catch(err => {
       console.log(err);
       res.end('error occured.')

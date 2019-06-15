@@ -5,39 +5,40 @@ var writerModel = require('../models/writer.model');
 
 
 router.get('/',(req,res)=>{
+    res.render('vwWriter/Home');
+});
+router.get('/writing',(req,res)=>{
     res.render('vwWriter/writer');
 });
-
+router.get('/edit',(req,res)=>{
+    res.render('vwWriter/edit');
+});
 
 router.post('/', (req, res) => {
     
-    console.log(req.body);
-    // var pp = {
-    //     noidung = req.body.editor1,
-    //     noidung = req.body.txtTitle,
-    //     noidung = req.body.txtSum,
-    //     noidung = req.body.cmbCM,
-    //     noidung = req.body.txtTag,
-    // };
-    // class pp = {
-    //     var noidung = req.body.editor1;
-    //     var noidung = req.body.txtTitle;
-    //     var noidung = req.body.txtSum;
-    //     var noidung = req.body.cmbCM;
-    //     var noidung = req.body.txtTag;
-    // }
-
     // var entity = {
-    //     txtPlace=req.body.txtPlace
-    // }
-    // writerModel.add(entity)
-    // .then(id => {
-    //     res.render('vwWriter/writer');
-    // })
-    // .catch(err => {
-    //     console.log(err)
-    // })
-    res.end('...')
+        
+    //     editor1 = req.body.txtPlace,
+    //     tieuDe = req.body.txtTitle,
+    //     tomTat = req.body.txtSum,
+    //     chuyenMuc = req.body.cmbCM,
+    //     Tag = req.body.txtTag,
+        
+
+    // };
+    
+    writerModel.add(req.body)
+    .then(n => {
+        //res.redirect('/writer');
+        res.end('...')
+        // res.render('vwWriter/writer');
+    })
+    .catch(err => {
+        console.log(err);
+        res.end('...')
+    })
+
+    
   
 });
 

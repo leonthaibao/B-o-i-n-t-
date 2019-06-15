@@ -2,6 +2,7 @@
 
 <head>
     <meta charset="utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -21,10 +22,10 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
         integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
         crossorigin="anonymous"></script>
-
+    <script src="/css/ckeditor/ckeditor.js"></script>
     <!--CSS file-->
-    <link rel="stylesheet" href="css/editor.css" type="text/css">
-
+    <link rel="stylesheet" href="/css/editor.css" type="text/css">
+    
 </head>
 
 <body>
@@ -33,7 +34,7 @@
 
         <div class="menu">
 
-            <a href="index.html"><img class="image" src="img/breaknew.png"></a>
+            <a href="index.html"><img class="image" src="/img/breaknew.png"></a>
 
             <li class="nav-item">
                 <form class="form-inline my-2 my-lg-0">
@@ -81,29 +82,53 @@
                         Invalid categoryId. <a href="/editor" class="alert-link">Go back</a>.
                     </div>
                     {{else}}
-                    <form  action="/editor/view">
+                    <form action="/editor/view">
                         <div class="form-group">
-                            <label for="txtidPost">#</label>
+                            <label for="txtidPost">ID</label>
                             <input readonly type="text" class="form-control" id="txtidPost" name="idPost"
                                 value="{{this.postdetail.idPost}}">
                         </div>
                         <div class="form-group">
-                            <label for="txtidPost">#</label>
+                            <label for="txtidPost">chuyên mục</label>
                             <input readonly type="text" class="form-control" id="txtidPost" name="chuyenMuc"
                                 value="{{this.postdetail.chuyenMuc}}">
                         </div>
-                         <div class="form-group">
+                        <div class="form-group">
+                            <label for="txtidPost">Tag</label>
+                            <input readonly type="text" class="form-control" id="txtidPost" name="Tag"
+                                value="{{this.postdetail.Tag}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtidPost">Tiêu đề</label>
+                            <input readonly type="text" class="form-control" id="txtidPost" name="Tiêu đề"
+                                value="{{this.postdetail.tieuDe}}">
+                        </div>
+                        <div class="form-group">
+                            <label for="txtidPost">tóm tắt</label>
+                            <input readonly type="text" class="form-control" id="txtidPost" name="chuyenMuc"
+                                value="{{this.postdetail.tomTat}}">
+                        </div>
+                        <div class="form-group">
                             <label for="txtidPost">#</label>
                             {{!-- <input readonly type="text" class="form-control" id="txtidPost" name="chuyenMuc"
                                 value="{{this.postdetail.editor1}}"> --}}
+
+                            <textarea readonly  name="editor1" id="editor1" rows="10" cols="80" >
                                 {{this.postdetail.editor1}}
-                        </div>
-                        
+                             </textarea>
+                            <script>
+                                // Replace the <textarea id="editor1"> with a CKEditor
+                                // instance, using default configuration.
+                              
+                            CKEDITOR.inline(editor1);
+                            
+                            </script>
+                           
                         <a class="btn btn-primary" href="/editor" role="button">
                             <i class="fa fa-backward" aria-hidden="true"></i>
                             List
                         </a>
-                        
+
                     </form>
                     {{/if}}
                 </div>

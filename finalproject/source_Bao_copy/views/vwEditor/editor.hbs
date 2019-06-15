@@ -23,7 +23,7 @@
         crossorigin="anonymous"></script>
 
     <!--CSS file-->
-    <link rel="stylesheet" href="css/editor.css" type="text/css">
+    <link rel="stylesheet" href="/css/editor.css" type="text/css">
 
 </head>
 
@@ -33,7 +33,7 @@
 
         <div class="menu">
 
-            <a href="index.html"><img class="image" src="img/breaknew.png"></a>
+            <a href="index.html"><img class="image" src="/img/breaknew.png"></a>
 
             <li class="nav-item">
                 <form class="form-inline my-2 my-lg-0">
@@ -78,18 +78,19 @@
                 <div class="card-body">
                     {{#if this.error}}
                     <div class="alert alert-danger" role="alert">
-                        Invalid categoryId. <a href="/editor" class="alert-link">Go back</a>.
+                        Invalid Id. <a href="/editor" class="alert-link">Go back</a>.
                     </div>
                     {{else}}
                     <form method="POST" action="/editor/update">
-                        <div class="form-group">
-                            <label for="txtidPost">#</label>
-                            <input readonly type="text" class="form-control" id="txtidPost" name="idPost"
-                                value="{{this.postdetail.idPost}}">
+                        <input hidden type="text" name="idPost" value="{{this.postdetail.idPost}}">
+                         <div class="form-group">
+                            <label for="txtCatName">Category</label>
+                            <input type="text" class="form-control" id="txtCatName" name="Tag" autofocus
+                                placeholder="Enter category name" value="{{this.postdetail.Tag}}">
                         </div>
                         <div class="form-group">
                             <label for="txtCatName">Category</label>
-                            <input type="text" class="form-control" id="txtCatName" name="chuyenMuc" autofocus
+                            <input type="text" class="form-control" id="txtCatName" name="chuyenMuc" 
                                 placeholder="Enter category name" value="{{this.postdetail.chuyenMuc}}">
                         </div>
                         <a class="btn btn-primary" href="/editor" role="button">
