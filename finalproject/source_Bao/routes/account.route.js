@@ -112,4 +112,30 @@ router.post('/logout', auth,(req,res,next)=>{
   res.redirect('/account/login');
 })
 
+router.get('/profile',auth,(req,res,next)=>{
+  var dob = moment(req.user, 'YYYY/MM/DD').format('DD/MM/YYYY');
+  var User = req.user;
+  User.BDay = dob;
+  res.render('vwAccount/profile',{
+    user: User,
+  });
+
+})
+
+router.post('/profile',auth,(req,res,next)=>{
+  var user=req.user;
+  var dob = moment(req.body.dob, 'DD/MM/YYYY').format('YYYY/MM/DD');
+  var entity = {
+        ID: user.ID,
+        Email: req.body.emails,
+        BDay: dob,
+  }
+  userModel.update(entity).then(n => {
+    res.redirect('/');
+  }).catch(err => {
+    console.log(err);
+    res.end('error occured.')
+  });
+})
+
 module.exports = router;
