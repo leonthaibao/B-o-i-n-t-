@@ -1,0 +1,296 @@
+{{#section 'css'}}
+    <link rel="stylesheet" href="/css/writer.css" type="text/css">
+    <link rel="stylesheet" type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css" media="all" />
+{{/section}}
+{{#section 'js'}}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fa/theme.min.js"></script>
+    <script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script>
+    <script>
+        
+          $('#inputimg').fileinput({
+            theme: 'fa',
+            dropZoneEnabled: false,
+            allowedFileExtensions: ['png', 'jpg', 'gif'],
+            uploadUrl: '/writer/upload',
+            maxFileCount: 1,
+          });
+        
+    </script>
+      <script language="javascript">
+            // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
+            // obj là tham số truyền vào và cũng chính là thẻ select
+            function genderChanged(obj)
+            {
+                 var message = document.getElementById('inputimg').value;
+                 var i = 0;
+                 var start=0, end=message.length;
+                for (i = 0; i < message.length; i++){
+                    if(message.charAt(i)=='\\'){
+                        start=i;
+                    }
+                }
+                console.log("sasd   ");
+                 document.getElementById('inputfilename').value = message.slice(start+1,end);
+            }
+ 
+        </script>
+    <script>
+       CKEDITOR.replace( 'editor1',{
+
+      // Setup content provider. See https://ckeditor.com/docs/ckeditor4/latest/guide/dev_media_embed
+      embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
+
+    } );
+         CKEDITOR.config.startupMode = 'source';
+    </script>
+{{/section}}
+
+
+
+
+<div class="body">
+          
+        <div class="container ">
+
+            <div class="menu">
+                
+                <a href="../index.html"><img class="image" src="/img/breaknew.png"></a>
+                
+                <li class="nav-item">
+                    <form class="form-inline my-2 my-lg-0">
+                        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                        <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><i class="fas fa-search" style="font-size: 24px;"></i></button>
+                    </form>
+                </li>
+                   <li class="nav-item">
+                    <a class="nav-link btn-outline-success " href="/writer" ><i class="fas fa-list-ol"></i> Danh sách bài viết</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link btn-outline-success active" href="/writer/add"  ><i class="fas fa-address-card"></i> Đăng bài viết</a>
+                </li>
+             
+            </div>
+
+            <div class="content">
+                <div class="top-bar d-flex justify-content-end">
+                        <div class="dropdown  userbutton">
+                                <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    <a href="#" class="btn">
+                                    <i class="fas fa-user fa-x"></i>
+                                    </a>
+                                </button>
+                                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                                    
+                                    <a class="dropdown-item" href="#"><i class="fas fa-info justify-content-start"></i>Thông tin tài khoản</a>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-user-cog justify-content-start"></i>Cập nhật thông tin</a>
+                                    <hr>
+                                    <a class="dropdown-item" href="#"><i class="fas fa-sign-out-alt justify-content-start"></i>Đăng xuất</a>
+                                </div>
+                            </div>  
+                    <a href="#" class="btn btn-info btn-lg">
+                        <i class="fas fa-sign-out-alt fa-x"></i> Sign out
+                    </a>
+                </div>
+                <br>
+                <div class="view-content">
+                    <div class="card">
+                            <h5 class="card-header">Cập nhật phóng viên</h5>
+                    {{#if this.error}}
+                            <div class="alert alert-warning" role="alert">
+                                Invalid tagID, Try again@@@@@@@@@@@@@@
+                            </div>
+                    {{else}}
+                        <div class="card-body">
+                                <form method="POST" action="/writer/update">
+                                   <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="inputid">ID bài viết</label>
+                                        <input readonly type="text" required="required" class="form-control" id="inputid" name="inputid" aria-describedby="emailHelp" autofocus placeholder="ID độc giả" value="{{this.viewpost.postID}}">
+                                    </div>
+                                    <label class="text-success font-weight-bold" for="inputimg">Ảnh bài viết</label>
+                                        <div class="file-loading" >
+                                            <input id="inputimg" name="inputimg" type="file" onchange="genderChanged(this)">  
+                                        </div>
+                                        <input readonly type="text"  required="required" class="form-control" id="inputfilename" name="inputfilename" autofocus placeholder="File img" value="{{this.viewpost.postAnhTieuDe}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="inputtieude">Tiêu đề bài viết</label>
+                                        <input type="text"  required="required" class="form-control" id="inputtieude" name="inputtieude" autofocus placeholder="Tiêu đề bài viết" value="{{this.viewpost.postTieuDe}}" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="inputtomtat">Tóm tắt bài viết</label>
+                                        <input type="text"  required="required" class="form-control" id="inputtomtat" name="inputtomtat" autofocus placeholder="Tóm tắt bài viết" value="{{this.viewpost.postTomTat}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="inputchuyenmuc">Chuyên mục</label>
+                                        <select  class="custom-select" id="inputchuyenmuc" name="inputchuyenmuc">
+                                            {{!-- <option value="draft">draft</option>
+                                            <option value="publish">publish</option> --}}
+                                            {{#each this.categories}}
+                                                <option value="{{cateID}}">{{cateName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="inputtag">Tag</label>
+                                        <select  class="custom-select" id="inputtag" name="inputtag">
+                                            {{!-- <option value="draft">draft</option>
+                                            <option value="publish">publish</option> --}}
+                                            {{#each this.tags}}
+                                                <option value="{{tagID}}">{{tagName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="inputhangbaiviet">Hạng bài viết</label>
+                                        <select  class="custom-select" id="inputhangbaiviet" name="inputhangbaiviet">
+                                            <option value="normal">normal</option>
+                                            <option value="premium">premium</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="editor1">Nội dung</label>
+                                            <textarea name="editor1" id="editor1" rows="10" cols="80">
+                                            {{this.viewpost.postNoiDung}}
+                                        </textarea>
+                                    </div>
+                                    <div class="form-group d-flex justify-content-between">
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>&nbsp; Sửa</button>
+                                        <a role="button" href="/writer" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
+                                    </div>
+                                </form>
+                        </div>
+                    {{/if}}
+                            {{!-- //end --}}
+                    </div>
+                </div>
+            </div>
+
+        </div>
+            
+            <div class="footer">
+                <footer class="page-footer font-small unique-color-dark">
+
+                        <div style="background-color: #6351ce;">
+                            <div class="container">
+                    
+                            <!-- Grid row-->
+                            <div class="row py-4 d-flex align-items-center">
+                    
+                                <!-- Grid column -->
+                                <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                                <h6 class="mb-0">Liên hệ chúng tôi tại</h6>
+                                </div>
+                                <!-- Grid column -->
+                    
+                                <!-- Grid column -->
+                                <div class="col-md-6 col-lg-7 text-center text-md-right">
+                    
+                                <!-- Facebook -->
+                                <a class="fb-ic" href="#">
+                                    <i class="fab fa-facebook-f white-text mr-4"> </i>
+                                </a>
+                                <!-- Google +-->
+                                <a class="gplus-ic" href="#">
+                                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                                </a>
+                                    <!--Instagram-->
+                                <a class="ins-ic" href="#">
+                                    <i class="fab fa-instagram white-text"> </i>
+                                </a>
+                    
+                                </div>
+                                <!-- Grid column -->
+                    
+                            </div>
+                            <!-- Grid row-->
+                    
+                            </div>
+                        </div>
+                    
+                        <!-- Footer Links -->
+                        <div class="container text-center text-md-left mt-5">
+                    
+                            <!-- Grid row -->
+                            <div class="row mt-3">
+                    
+                            <!-- Grid column -->
+                            <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+                    
+                                <!-- Content -->
+                                <h6 class="text-uppercase font-weight-bold">Team đồ án web No.41</h6>
+                                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                                <p>Đồ an báo điện tử của bộ môn phát triển ứng dụng web.</p>
+                    
+                            </div>
+                            <!-- Grid column -->
+                    
+                            <!-- Grid column -->
+                            <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+                    
+                                <!-- Links -->
+                                <h6 class="text-uppercase font-weight-bold">Về chúng tôi</h6>
+                                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                                <p>
+                                <a href="#!">Giới thiệu</a>
+                                </p>
+                                <p>
+                                <a href="#!">Khó khăn</a>
+                                </p>
+                                <p>
+                                <a href="#!">Thuận lợi</a>
+                                </p>
+                    
+                            </div>
+                            <!-- Grid column -->
+                    
+                            <!-- Grid column -->
+                            <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+                    
+                                <!-- Links -->
+                                <h6 class="text-uppercase font-weight-bold">Về đồ án</h6>
+                                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                                <p>
+                                <a href="#!">Giới thiệu</a>
+                                </p>
+                                <p>
+                                <a href="#!">Tiến độ</a>
+                                </p>
+                                <p>
+                                <a href="#!">Nguồn tham khảo</a>
+                                </p>
+                                <p>
+                                <a href="#!">Hướng dẫn</a>
+                                </p>
+                    
+                            </div>
+                            <!-- Grid column -->
+                    
+                            <!-- Grid column -->
+                            <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+                    
+                                <!-- Links -->
+                                <h6 class="text-uppercase font-weight-bold">Liên hệ</h6>
+                                <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                                <p>
+                                <i class="fas fa-home mr-3"></i> Trường Đại học Khoa học Tự nhiên TPHCM</p>
+                                <p>
+                                <i class="fas fa-envelope mr-3"></i> leonthaibao@gmail.com</p>
+                                <p>
+                                <i class="fas fa-phone mr-3"></i> 0789 578 259</p>
+                    
+                    
+                            </div>
+                            <!-- Grid column -->
+                    
+                            </div>
+                            <!-- Grid row -->
+                    
+                        </div>
+                        <!-- Footer Links -->
+                        
+                </footer>           
+        </div>
+
+</div>

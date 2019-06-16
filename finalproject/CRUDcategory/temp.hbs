@@ -1,0 +1,41 @@
+<div class="form-group">
+                                                <label class="text-success font-weight-bold" for="inputtieude">Tiêu đề bài viết</label>
+                                                <input type="text"  required="required" class="form-control" id="inputtieude" name="inputtieude" autofocus placeholder="Tiêu đề bài viết">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-success font-weight-bold" for="inputtomtat">Tóm tắt bài viết</label>
+                                                <input type="text"  required="required" class="form-control" id="inputtomtat" name="inputtomtat" autofocus placeholder="Tóm tắt bài viết">
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-success font-weight-bold" for="inputchuyenmuc">Chuyên mục</label>
+                                                <select  class="custom-select" id="inputchuyenmuc" name="inputchuyenmuc">
+                                                    {{!-- <option value="draft">draft</option>
+                                                    <option value="publish">publish</option> --}}
+                                                    {{#each this.categories}}
+                                                        <option value="{{cateID}}">{{cateName}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label class="text-success font-weight-bold" for="inputtag">Tag</label>
+                                                <select  class="custom-select" id="inputtag" name="inputtag">
+                                                    {{!-- <option value="draft">draft</option>
+                                                    <option value="publish">publish</option> --}}
+                                                    {{#each this.tags}}
+                                                        <option value="{{tagID}}">{{tagName}}</option>
+                                                    {{/each}}
+                                                </select>
+                                            </div>
+                                             <div class="form-group">
+                                                <label class="text-success font-weight-bold" for="inputhangbaiviet">Hạng bài viết</label>
+                                                <select  class="custom-select" id="inputhangbaiviet" name="inputhangbaiviet">
+                                                    <option value="normal">normal</option>
+                                                    <option value="premium">premium</option>
+                                                </select>
+                                            </div>
+                                             <div class="form-group">
+                                                <label class="text-success font-weight-bold" for="inputnoidung">Nội dung</label>
+                                                 <textarea name="editor1" id="editor1" rows="10" cols="80">
+                                                    This is my textarea to be replaced with CKEditor.
+                                                </textarea>
+                                            </div>

@@ -6,10 +6,46 @@ var createConnection = () =>{
         port     :   3306,
         user     : 'root',
         password : 'root',
-        database : 'baodientu'
+        database : 'baodientu',
+        debug: false,
+        multipleStatements: true
       });
 }
 module.exports = {
+    load2table: sql=>{
+        return new Promise((resolve,reject)=>{
+            var connection= createConnection();
+            connection.connect();   
+            connection.query(sql, [2, 1], function(error, results, fields) {
+                if (error) {
+                    reject(error);
+                }
+                else{   
+                    resolve(results);
+                }
+                connection.end();
+            });
+            
+        })
+
+    },
+    load3table: sql=>{
+        return new Promise((resolve,reject)=>{
+            var connection= createConnection();
+            connection.connect();   
+            connection.query(sql, [3, 1], function(error, results, fields) {
+                if (error) {
+                    reject(error);
+                }
+                else{   
+                    resolve(results);
+                }
+                connection.end();
+            });
+            
+        })
+
+    },
     load: sql=>{
         return new Promise((resolve,reject)=>{
             var connection= createConnection();

@@ -4,76 +4,68 @@ create table category
 (
 	`cateID` INT(11) NOT NULL auto_increment,
     `cateName` nvarchar(50) NOT NULL,
-    `postCounter` INT(11) ,
     `cateLink` varchar(500),
     constraint PK_CATEGORY PRIMARY KEY (`cateID`)
 );
 
+insert into `category` 	values (0,N'n/a','#');
+insert into `category` 	values (1,N'Hải sản','hai-san');
+insert into `category` values (2,N'Nông sản','nong-san');
 
-insert into `category` 	values (1,N'Hải sản',5,'hai-san.html');
-insert into `category` values (2,N'Nông sản',6,'nong-san.html');
-
-drop table `category`;
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 
 create table tags
 (
 	`tagID` INT(11) NOT NULL auto_increment,
     `tagName` nvarchar(50) NOT NULL,
-    `tagSoBaiViet` INT(11),
     `tagLink` varchar(500),
     constraint PK_TAGS primary key (`tagID`)
 );
-insert into `tags` values(1,N'Chuyện nhà nông',5,'chuyen-nha-nong.html');
+insert into `tags` values(1,N'Chuyện nhà nông','chuyen-nha-nong.html');
 
-create table posts
+
+create table post
 (
-	`postID` INT(11) NOT NULL auto_increment,
-    `postName` nvarchar(500) NOT NULL,
-    `postStatus` varchar(50) NOT NULL,
-    `postLink` varchar(500),
-    constraint PK_POSTS primary key (`postID`)
+	`postID`  INT(11) NOT NULL auto_increment,
+    `postAnhTieuDe` varchar(50) not NULL,
+    `postTieuDe` nvarchar(500) NOT NULL,
+    `postTomTat` nvarchar(1000) NOT NULL,
+    `postNoiDung` nvarchar(15000) NOT NULL,
+    `postChuyenMucID` INT(11) NOT NULL,
+    `postTagID`  INT(11) NOT NULL,
+    `postTrangThaiID` varchar(10) NOT NULL, 
+    `postLuotView` INT(11) NOT NULL,
+    `postHangBaiViet` nvarchar(50),
+    `postNgayDang` date,
+    `postWriterID` INT(11) NOT NULL,
+    `postLyDoTuChoi` nvarchar(500),
+    `postNgayXuatBan` date, 
+    constraint PK_POST primary key (`postID`)
 );
-insert into `posts` values(1,N'Chờ cơ hội tôm Việt Nam bức phá tại Mỹ','draft','sthsth');
-insert into `posts` values(2,N'ststh','publish','sthsth');
 
-
-
-create table writerusers
-(
-	`userID` int(11) NOT NULL auto_increment,
-    `userName` nvarchar(50) NOT NULL,
-    constraint PK_WRITERUSERS primary key (`userID`)
-);
-insert into `writerusers` values (1,N'Nguyễn Văn A');
-insert into `writerusers` values (2,N'Nguyễn Văn B');
-
-drop table editorusers	;
-create table editorusers
-(
-	`userID` int(11) NOT NULL auto_increment,
-    `userName` nvarchar(50) NOT NULL,
-	`userCateID`  INT(11) NOT NULL,
-    constraint PK_EDITORUSERS primary key (`userID`)
-);
-alter table editorusers
-add constraint  fk_editorusers_category
-foreign key (`userCateID`)
+alter table post
+add constraint  fk_post_category
+foreign key (`postChuyenMucID`)
 references category(`cateID`);
-insert into `editorusers` values (1,N'Lê Đ',1);
-insert into `editorusers` values (2,N'Lê Sds',2);
+alter table post
+add constraint  fk_post_tags
+foreign key (`postTagID`)
+references tags(`tagID`);
+alter table post
+add constraint  fk_post_users
+foreign key (`postWriterID`)
+references users(`userID`);
 
 
 
-
-create table subscriberusers
+create table users
 (
 	`userID` int(11) NOT NULL auto_increment,
-    `userName` nvarchar(50) NOT NULL,
-	`userExpiredDay`  date,
-    constraint PK_subscriberusers primary key (`userID`)
+    `userName` varchar(16) NOT NULL,
+    `userPassword` varchar(16) NOT NULL,
+    `userType` int(11) NOT NULL,
+    `userCateID` int(11) NOT NULL,
+     constraint PK_USERS primary key (`userID`)  
 );
-insert into `subscriberusers` values (1,N'Lê Đ','2019-6-14');
-insert into `subscriberusers` values (2,N'Lê Sds','2019-6-14');
 
-
+insert into users values (1,'Nono','123',1,0);
