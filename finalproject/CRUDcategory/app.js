@@ -21,6 +21,7 @@ app.set('view engine', 'hbs');
 app.get('/',(req,res)=>{
     res.render('home.hbs');
 })
+app.use('/editor', require('./routes/editor.route'));
 app.use('/writer', require('./routes/writer.route'));
 app.use('/admin', require('./routes/admin/admin.route'));
 // app.use('/admin/users', require('./routes/admin/user.route'));

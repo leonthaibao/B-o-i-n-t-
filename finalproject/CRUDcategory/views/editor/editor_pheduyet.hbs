@@ -1,25 +1,59 @@
 {{#section 'css'}}
     <link rel="stylesheet" href="/css/writer.css" type="text/css">
     <link rel="stylesheet" type="text/css"  href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/css/fileinput.min.css" media="all" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.min.css">
 {{/section}}
 {{#section 'js'}}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/js/fileinput.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-fileinput/5.0.3/themes/fa/theme.min.js"></script>
-    <script src="//cdn.ckeditor.com/4.11.4/standard/ckeditor.js"></script>
+    <script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script>
     <script>
-        $(function () {
+        
           $('#inputimg').fileinput({
             theme: 'fa',
             dropZoneEnabled: false,
             allowedFileExtensions: ['png', 'jpg', 'gif'],
             uploadUrl: '/writer/upload',
-            uploadAsync: false,
             maxFileCount: 1,
           });
-        });
+        
     </script>
+      <script language="javascript">
+            // Hàm xử lý khi thẻ select thay đổi giá trị được chọn
+            // obj là tham số truyền vào và cũng chính là thẻ select
+            function genderChanged(obj)
+            {
+                 var message = document.getElementById('inputimg').value;
+                 var i = 0;
+                 var start=0, end=message.length;
+                for (i = 0; i < message.length; i++){
+                    if(message.charAt(i)=='\\'){
+                        start=i;
+                    }
+                }
+                console.log("sasd   ");
+                 document.getElementById('inputfilename').value = message.slice(start+1,end);
+            }
+ 
+        </script>
+         <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-datetimepicker/2.5.20/jquery.datetimepicker.full.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-validate/1.19.0/jquery.validate.min.js"></script>
+        <script>
+            $(function () {
+
+                $('#inputngayxuatban').datetimepicker({
+                mask: true,
+                });
+            })
+        </script>
     <script>
-       CKEDITOR.replace( 'editor1' );
+       CKEDITOR.replace( 'editor1',{
+
+      // Setup content provider. See https://ckeditor.com/docs/ckeditor4/latest/guide/dev_media_embed
+      embed_provider: '//ckeditor.iframe.ly/api/oembed?url={url}&callback={callback}',
+
+    } );
+         CKEDITOR.config.startupMode = 'source';
     </script>
 {{/section}}
 
@@ -39,14 +73,12 @@
                         <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                         <button class="btn btn-outline-success my-1 my-sm-0" type="submit"><i class="fas fa-search" style="font-size: 24px;"></i></button>
                     </form>
-                </li>
-                  <li class="nav-item">
-                    <a class="nav-link btn-outline-success active" href="/writer" ><i class="fas fa-list-ol"></i> Danh sách bài viết</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link btn-outline-success " href="/writer/add"  ><i class="fas fa-address-card"></i> Đăng bài viết</a>
-                </li>
-             
+                    <li class="nav-item">
+                        <a class="nav-link btn-outline-success active" href="#" ><i class="fas fa-list-ol"></i> Danh sách chờ duyệt</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link btn-outline-success " href="#"  ><i class="fas fa-list-ol"></i> Danh sách bài đã duyệt/từ chối</a>
+                    </li>
             </div>
 
             <div class="content">
@@ -72,54 +104,74 @@
                 <br>
                 <div class="view-content">
                     <div class="card">
-                            <br>
-                            <ul class="nav nav-tabs d-flex justify-content-center">
-                                <li class="nav-item">
-                                    <a class="nav-link " href="/writer">Chưa được duyệt</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="/writer/ddd">Đã duyệt, chờ xuất bản</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="/writer/dxb">Đã xuất bản</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/writer/btc">Bị từ chối</a>
-                                </li>
-                            </ul>
-                            <br>
-                            <div class="card-header d-flex justify-content-between"><h2 class="text-success">Danh sách bài</h2>  <a class="btn btn-outline-success" href="/writer/add" role="button"> <i class="fas fa-plus-circle fa-2x "></i></a></div>
-                                <div class="card-body">
-                                    <div class="wrapper-editor">
-                                        <table class="table table-bordered table-hover">
-                                            <thead>
-                                                <tr>
-                                                    <th scope="col" class="text-center th-sm">PostID</th>
-                                                    <th scope="col" class="text-center th-sm">Tiêu đề</th>
-                                                    <th scope="col" class="text-center th-sm">Tóm tắt</th>
-                                                    <th scope="col" class="text-center th-sm">Chuyên mục</th>
-                                                     <th scope="col" class="text-center th-sm">Tag</th>  
-                                                    <th scope="col" class="text-center th-sm">Trạng thái</th>  
-                                                     <th scope="col" class="text-center th-sm">Chi tiết</th>  
-                                                </tr>
-                                            </thead>
-                                            <tbody>                           
-                                                {{#each this.postDXB}}
-                                                    <tr>
-                                                        <td class="text-center">{{postID}}</td>
-                                                        <td class="text-center">{{postTieuDe}}</td>
-                                                        <td class="text-center">{{postTomTat}}</td>
-                                                        <td class="text-center">{{cateName}}</td>
-                                                         <td class="text-center">{{tagName}}</td>
-                                                         <td class="text-center">Đã xuất bản</td>
-                                                         <td class="text-center"> <a  class="btn btn-success btn-rounded btn-sm my-0" href="/writer/show/dxbid={{postID}}">Xem chi tiết</a></td>
-                                                                              
-                                                    </tr> 
-                                                {{/each}}
-                                            </tbody>                                                             
-                                        </table>
+                            <h5 class="card-header">Phê duyệt bài viết</h5>
+                    {{#if this.error}}
+                            <div class="alert alert-warning" role="alert">
+                                Invalid tagID, Try again@@@@@@@@@@@@@@
+                            </div>
+                    {{else}}
+                        <div class="card-body">
+                                <form method="POST" action="/editor/confirm">
+                                   <div class="form-group">
+                                    <div class="form-group">
+                                        <label for="inputid">ID bài viết</label>
+                                        <input readonly type="text" required="required" class="form-control" id="inputid" name="inputid" aria-describedby="emailHelp" autofocus placeholder="ID độc giả" value="{{this.viewpost.postID}}">
                                     </div>
-                                </div>
+                                    <label class="text-success font-weight-bold" for="inputimg">Ảnh bài viết</label>
+                                        <input readonly type="text"  required="required" class="form-control" id="inputfilename" name="inputfilename" autofocus placeholder="File img" value="{{this.viewpost.postAnhTieuDe}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="inputtieude">Tiêu đề bài viết</label>
+                                        <input readonly type="text"  required="required" class="form-control" id="inputtieude" name="inputtieude" autofocus placeholder="Tiêu đề bài viết" value="{{this.viewpost.postTieuDe}}" >
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="inputtomtat">Tóm tắt bài viết</label>
+                                        <input readonly type="text"  required="required" class="form-control" id="inputtomtat" name="inputtomtat" autofocus placeholder="Tóm tắt bài viết" value="{{this.viewpost.postTomTat}}">
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="inputchuyenmuc">Chuyên mục</label>
+                                        <select  class="custom-select" id="inputchuyenmuc" name="inputchuyenmuc">
+                                            {{!-- <option value="draft">draft</option>
+                                            <option value="publish">publish</option> --}}
+                                            {{#each this.categories}}
+                                                <option value="{{cateID}}">{{cateName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="inputtag">Tag</label>
+                                        <select  class="custom-select" id="inputtag" name="inputtag">
+                                            {{!-- <option value="draft">draft</option>
+                                            <option value="publish">publish</option> --}}
+                                            {{#each this.tags}}
+                                                <option value="{{tagID}}">{{tagName}}</option>
+                                            {{/each}}
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="inputhangbaiviet">Hạng bài viết</label>
+                                        <select  class="custom-select" id="inputhangbaiviet" name="inputhangbaiviet">
+                                            <option value="normal">normal</option>
+                                            <option value="premium">premium</option>
+                                        </select>
+                                    </div>
+                                    <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="inputngayxuatban">Ngày xuất bản</label>
+                                        <input required type="text" class="form-control" id="inputngayxuatban" name="inputngayxuatban" >
+                                    </div>
+                                    {{!-- <div class="form-group">
+                                        <label class="text-success font-weight-bold" for="editor1">Nội dung</label>
+                                            <textarea readonly name="editor1" id="editor1" rows="10" cols="80">
+                                            {{this.viewpost.postNoiDung}}
+                                        </textarea>
+                                    </div> --}}
+                                    <div class="form-group d-flex justify-content-between">
+                                        <button type="submit" class="btn btn-success"><i class="fas fa-check"></i>&nbsp; Phê duyệt</button>
+                                        <a role="button" href="/editor" class="btn btn-primary"><i class="fas fa-arrow-left"></i>&nbsp; Trở lại</a>
+                                    </div>
+                                </form>
+                        </div>
+                    {{/if}}
                             {{!-- //end --}}
                     </div>
                 </div>

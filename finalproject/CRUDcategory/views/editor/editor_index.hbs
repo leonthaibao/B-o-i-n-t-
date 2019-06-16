@@ -41,10 +41,10 @@
                     </form>
                 </li>
                   <li class="nav-item">
-                    <a class="nav-link btn-outline-success active" href="/writer" ><i class="fas fa-list-ol"></i> Danh sách bài viết</a>
+                    <a class="nav-link btn-outline-success active" href="/editor" ><i class="fas fa-list-ol"></i> Danh sách chờ duyệt</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link btn-outline-success " href="/writer/add"  ><i class="fas fa-address-card"></i> Đăng bài viết</a>
+                    <a class="nav-link btn-outline-success " href="/editor/list"  ><i class="fas fa-list-ol"></i> Danh sách bài đã duyệt/từ chối</a>
                 </li>
              
             </div>
@@ -73,22 +73,7 @@
                 <div class="view-content">
                     <div class="card">
                             <br>
-                            <ul class="nav nav-tabs d-flex justify-content-center">
-                                <li class="nav-item">
-                                    <a class="nav-link " href="/writer">Chưa được duyệt</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link " href="/writer/ddd">Đã duyệt, chờ xuất bản</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link active" href="/writer/dxb">Đã xuất bản</a>
-                                </li>
-                                <li class="nav-item">
-                                    <a class="nav-link" href="/writer/btc">Bị từ chối</a>
-                                </li>
-                            </ul>
-                            <br>
-                            <div class="card-header d-flex justify-content-between"><h2 class="text-success">Danh sách bài</h2>  <a class="btn btn-outline-success" href="/writer/add" role="button"> <i class="fas fa-plus-circle fa-2x "></i></a></div>
+                            <div class="card-header d-flex justify-content-between"><h2 class="text-success">Danh sách bài</h2></div>
                                 <div class="card-body">
                                     <div class="wrapper-editor">
                                         <table class="table table-bordered table-hover">
@@ -101,19 +86,23 @@
                                                      <th scope="col" class="text-center th-sm">Tag</th>  
                                                     <th scope="col" class="text-center th-sm">Trạng thái</th>  
                                                      <th scope="col" class="text-center th-sm">Chi tiết</th>  
+                                                      <th scope="col" class="text-center th-sm">Phê duyệt</th>  
                                                 </tr>
                                             </thead>
                                             <tbody>                           
-                                                {{#each this.postDXB}}
+                                                {{#each this.postCDD}}
                                                     <tr>
                                                         <td class="text-center">{{postID}}</td>
                                                         <td class="text-center">{{postTieuDe}}</td>
                                                         <td class="text-center">{{postTomTat}}</td>
                                                         <td class="text-center">{{cateName}}</td>
                                                          <td class="text-center">{{tagName}}</td>
-                                                         <td class="text-center">Đã xuất bản</td>
-                                                         <td class="text-center"> <a  class="btn btn-success btn-rounded btn-sm my-0" href="/writer/show/dxbid={{postID}}">Xem chi tiết</a></td>
-                                                                              
+                                                         <td class="text-center">Chưa được duyệt</td>
+                                                         <td class="text-center"> <a  class="btn btn-primary btn-rounded btn-sm my-0" href="/writer/show/cddid={{postID}}">Xem chi tiết</a></td>
+                                                        <td class="text-center">
+                                                            <a class="btn btn-rounded btn-success btn-sm remove-first-tr d-inline" href="/editor/confirm/{{postID}}" type="button"> <i class="fas fa-check"></i></a>
+                                                            <a class="btn btn-rounded btn-danger btn-sm remove-first-tr d-inline" href="/editor/refuse/{{postID}}" type="button"> <i class="fas fa-minus-circle"></i></a>            
+                                                        </td>                                  
                                                     </tr> 
                                                 {{/each}}
                                             </tbody>                                                             
