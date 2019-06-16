@@ -19,7 +19,7 @@ module.exports = {
         return db.load('select cateID,cateName from category');
     },
     pageByCat: ( limit, offset) => {
-        return db.load(`select * from category limit ${limit} offset ${offset}`);
+        return db.load(`select c.cateID, c.cateName, count(*) as SLBV from category c, post p where c.cateID = p.postChuyenMucID group by c.cateID, c.cateName limit ${limit} offset ${offset}`);
     },
     
     countByCat: () => {

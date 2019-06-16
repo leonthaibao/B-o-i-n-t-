@@ -26,11 +26,10 @@ router.get('/',(req,res)=>{
         res.end('error occured.');
     })
 })
-router.get('/show/cddid=:id',(req,res)=>{
+router.get('/show/:id',(req,res)=>{
     var postid = req.params.id;
-    var writerID = 1;
 
-    postModel.singleCDDLoad(postid,writerID).then(rows=>{
+    postModel.singleLoad(postid).then(rows=>{
         if(rows.length>0){
             res.render('writer/post_detail',{
                 error: false,
@@ -196,26 +195,6 @@ router.get('/ddd',(req,res)=>{
         res.end('error occured.');
     })
 })
-router.get('/show/dddid=:id',(req,res)=>{
-    var postid = req.params.id;
-    var writerID = 1;
-
-    postModel.singleDDDLoad(postid,writerID).then(rows=>{
-        if(rows.length>0){
-            res.render('writer/post_detail',{
-                error: false,
-                viewpost: rows[0]
-            });
-        }else{
-            res.render('writer/post_detail',{
-                error: true
-            })
-        }
-    }).catch(err=>{
-        console.log(err);
-        res.end('error occured.');
-    })
-})
 
 
 //DXB LISSSSSSSSSSSSSSSSSSSS2qsadddddddddddddddddddd
@@ -230,26 +209,6 @@ router.get('/dxb',(req,res)=>{
             });
         }else{
             res.render('writer/writer_listDXB',{
-                error: true
-            })
-        }
-    }).catch(err=>{
-        console.log(err);
-        res.end('error occured.');
-    })
-})
-router.get('/show/dxbid=:id',(req,res)=>{
-    var postid = req.params.id;
-    var writerID = 1;
-
-    postModel.singleDXBLoad(postid,writerID).then(rows=>{
-        if(rows.length>0){
-            res.render('writer/post_detail',{
-                error: false,
-                viewpost: rows[0]
-            });
-        }else{
-            res.render('writer/post_detail',{
                 error: true
             })
         }
@@ -280,24 +239,5 @@ router.get('/btc',(req,res)=>{
         res.end('error occured.');
     })
 })
-router.get('/show/btcid=:id',(req,res)=>{
-    var postid = req.params.id;
-    var writerID = 1;
 
-    postModel.singleBTCLoad(postid,writerID).then(rows=>{
-        if(rows.length>0){
-            res.render('writer/post_detail',{
-                error: false,
-                viewpost: rows[0]
-            });
-        }else{
-            res.render('writer/post_detail',{
-                error: true
-            })
-        }
-    }).catch(err=>{
-        console.log(err);
-        res.end('error occured.');
-    })
-})
 module.exports=router;

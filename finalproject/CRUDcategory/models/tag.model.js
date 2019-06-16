@@ -16,7 +16,7 @@ module.exports = {
         return db.delete('tags','tagID',id);
     },
     pageByCat: ( limit, offset) => {
-        return db.load(`select * from tags limit ${limit} offset ${offset}`);
+        return db.load(`select t.tagID, t.tagName, count(*) as SLBV from tags t, post p where p.postTagID = t.tagID  group by t.tagID, t.tagName limit ${limit} offset ${offset}`);
     },
     
     countByCat: () => {
