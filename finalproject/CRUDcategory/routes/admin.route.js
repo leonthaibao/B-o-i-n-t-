@@ -138,6 +138,19 @@ router.post('/categories/delete',(req,res)=>{
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+//danh sach bai dang chua xuat ban
 router.get('/posts', (req, res, next) => {
     var page = req.query.page || 1;
     if (page < 1) page = 1;
@@ -166,9 +179,40 @@ router.get('/posts', (req, res, next) => {
         title: 'Administrator',
       });
     }).catch(next);
+})
+//danh sach bai dang da xuan ban
+router.get('/posts/refuselist', (req, res, next) => {
+    var page = req.query.page || 1;
+    if (page < 1) page = 1;
+  
+    var limit = 6;
+    var offset = (page - 1) * limit;
+  
+  
+    Promise.all([
+        postModel.pageByDXBPost( limit, offset),
+        postModel.countByDXBPost(),
+    ]).then(([rows, count_rows]) => {
+  
+      var total = count_rows[0].total;
+      var nPages = Math.floor(total / limit);
+      if (total % limit > 0) nPages++;
+      var pages = [];
+      for (i = 1; i <= nPages; i++) {
+        var obj = { value: i, active: i === +page };
+        pages.push(obj);
+      }
+  
+      res.render('admin/posts/post_index_2', {
+        posts: rows,
+        pages,
+        title: 'Administrator',
+      });
+    }).catch(next);
   })
 
-  router.get('/posts/add',(req,res)=>{
+//them bai dang
+router.get('/posts/add',(req,res)=>{
 
     
 
@@ -266,7 +310,7 @@ router.post('/posts/update',(req,res)=>{
         console.log(err);
     });
 })
-
+//xoa bai dang
 router.get('/posts/delete/:id',(req,res)=>{
     var postid = req.params.id;
 
@@ -297,8 +341,101 @@ router.post('/posts/delete',(req,res)=>{
         console.log(err);
     });
 })
+//xuat ban bai viet
+router.get('/posts/confirm/:id',(req,res)=>{
+    var postid = req.params.id;
+    var adminid = 4;
+
+    postModel.loadthreetable(postid,adminid).then(rows=>{
+        if(rows.length>0){
+            
+            res.render('admin/posts/post_xuatban',{
+                error: false,
+                categories: rows[0],
+                tags: rows[1],
+                viewpost: rows[2][0]
+            });
+        }else{
+            res.render('admin/posts/post_xuatban',{
+                error: true
+            })
+        }
+    }).catch(err=>{
+        console.log(err);
+        res.end('error occured.');
+    })
+})
+
+router.post('/posts/confirm',(req,res)=>{
+    var adminid=4;
+    var now = moment().format('YYYY-MM-DD');
+    var entity = {
+        postID: req.body.inputid,
+        postTieuDe: req.body.inputtieude,
+        postTrangThaiID: req.body.inputtrangthai,
+        postNgayDang: now,
+        postEditorID: adminid,
+    }
+    postModel.update(entity).then((id)=>{
+        console.log(id);
+        res.redirect('/admin/posts');
+    }).catch(err=>{
+        console.log(err);
+    });
+})
+
+//thu hoi bai viet
+router.get('/posts/rollback/:id',(req,res)=>{
+    var postid = req.params.id;
+    var adminid = 4;
+
+    postModel.loadthreetable(postid,adminid).then(rows=>{
+        if(rows.length>0){
+            
+            res.render('admin/posts/post_thuhoi',{
+                error: false,
+                categories: rows[0],
+                tags: rows[1],
+                viewpost: rows[2][0]
+            });
+        }else{
+            res.render('admin/posts/post_thuhoi',{
+                error: true
+            })
+        }
+    }).catch(err=>{
+        console.log(err);
+        res.end('error occured.');
+    })
+})
+
+router.post('/posts/rollback',(req,res)=>{
+    var adminid=null;
+    var now = null;
+    var entity = {
+        postID: req.body.inputid,
+        postTieuDe: req.body.inputtieude,
+        postTrangThaiID: req.body.inputtrangthai,
+        postNgayDang: now,
+        postEditorID: adminid,
+    }
+    postModel.update(entity).then((id)=>{
+        console.log(id);
+        res.redirect('/admin/posts/refuselist');
+    }).catch(err=>{
+        console.log(err);
+    });
+})
 
 
+
+
+
+
+
+
+
+//tag reqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq
 
 router.get('/tags', (req, res, next) => {
     var page = req.query.page || 1;
@@ -413,6 +550,22 @@ router.post('/tags/delete',(req,res)=>{
         console.log(err);
     });
 })
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 //writerrrrrrrrr
@@ -533,6 +686,15 @@ router.post('/users/writer/delete',(req,res)=>{
         console.log(err);
     });
 })
+
+
+
+
+
+
+
+
+
 
 
 //Editorrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrrr

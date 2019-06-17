@@ -58,10 +58,10 @@
                          <br>
                             <ul class="nav nav-tabs d-flex justify-content-center">
                                   <li class="nav-item ">
-                                    <a class="nav-link active" href="/admin/posts">Bài viết chưa xuất bản</a>
+                                    <a class="nav-link " href="/admin/posts">Bài viết chưa xuất bản</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link " href="/admin/posts/refuselist">Bài viết đã xuất bản</a>
+                                    <a class="nav-link active" href="/admin/posts/refuselist">Bài viết đã xuất bản</a>
                                 </li>
                             </ul>
                         <br>
@@ -80,7 +80,7 @@
                                                     <th scope="col" class="text-center th-sm">Trạng thái</th>  
                                                      <th scope="col" class="text-center th-sm">Chi tiết</th>  
                                                      <th scope="col" class="text-center th-sm">Thao tác</th>  
-                                                     <th scope="col" class="text-center th-sm">Phê duyệt</th>  
+                                                     <th scope="col" class="text-center th-sm">Thu hồi</th>  
                                                 </tr>
                                             </thead>
                                             <tbody>                           
@@ -97,7 +97,7 @@
                                                             <a class="btn btn-rounded btn-primary btn-sm remove-first-tr d-inline" href="/admin/posts/update/{{postID}}" type="button"> <i class="fas fa-edit"></i></a>   
                                                             <a class="btn btn-rounded btn-danger btn-sm remove-first-tr d-inline" href="/admin/posts/delete/{{postID}}" type="button"> <i class="fas fa-eraser"></i></a>            
                                                         </td>     
-                                                        <td class="text-center"> <a  class="btn btn-success btn-rounded btn-sm my-0" href="/admin/posts/confirm/{{postID}}">Phê duyệt</a></td>  
+                                                        <td class="text-center"> <a  class="btn btn-warning btn-rounded btn-sm my-0" href="/admin/posts/rollback/{{postID}}">Thu hồi</a></td>  
                                                     </tr> 
                                                 {{/each}}
                                             </tbody>                                                             

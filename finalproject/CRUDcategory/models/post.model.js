@@ -53,6 +53,12 @@ module.exports = {
     },
     
     countByCat: () => {
-        return db.load(`select count(*) as total from post`);
+        return db.load(`select count(*) as total from post p where p.postTrangThaiID!='DXB'`);
+    },
+    pageByDXBPost: ( limit, offset) => {
+        return db.load(`SELECT * FROM post p, category c, tags t where p.postTrangThaiID='DXB' and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID limit ${limit} offset ${offset}`);
+    },
+    countByDXBPost: () => {
+        return db.load(`select count(*) as total from post p where p.postTrangThaiID='DXB'`);
     },
 }
