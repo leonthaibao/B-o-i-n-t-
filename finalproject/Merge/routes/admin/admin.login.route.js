@@ -22,8 +22,16 @@ router.post('/login',(req,res,next)=>{
         req.logIn(user, err => {
           if (err)
             return next(err);
-    
-          return res.redirect('/');
+          if (user.userType ===1 )
+          return res.redirect('/writer');
+
+          if (user.userType ===2 )
+          return res.redirect('/editor');
+
+          if (user.userType ===3 )
+          return res.redirect('/admin');
+
+          return res.render('/');
         });
       })(req, res, next);
 })

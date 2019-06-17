@@ -28,7 +28,7 @@ module.exports = function (app) {
       }
       else {
         var user = rows[1][0];
-        if(user.PASSWORD === password){
+        if(user.userPassword === password){
           return done(null, user);
         }
         return done(null, false, { message: 'Invalid password.' });
