@@ -158,6 +158,13 @@ background-color: #F1F1F3;
 .widgets ul li a:hover {
   color: #d72924;
 }
+#tieude a{
+	color: white;
+}
+
+#tieude a:hover{
+	color: #232323
+}
 
 a:hover {
   color: brown;

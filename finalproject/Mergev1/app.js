@@ -14,11 +14,11 @@ app.use(express.urlencoded({extended:true }));
 app.use(express.json());
 
 
-app.get('/', (req,res) => { 
+/*app.get('/', (req,res) => { 
     console.log(res.locals.isAuthenticated)
     res.render('home');
 });
-
+*/
 app.use((req,res,next) =>{
     if(req.user)
     {
@@ -34,6 +34,7 @@ app.use('/ad',require('./routes/admin/admin.login.route'));
 app.use('/editor', require('./routes/admin/editor.route'));
 app.use('/writer', require('./routes/admin/writer.route'));
 app.use('/admin', require('./routes/admin/admin.route'));
+app.use('/', require('./routes/home.route'));
 
 app.use(express.static('public'));
 
