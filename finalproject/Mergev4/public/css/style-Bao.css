@@ -12,6 +12,13 @@
 	margin-right: 50px;
 	
 }
+#news img{
+	width: 500px;
+	height: 75px;
+	margin-left: 10px;
+	margin-right:25px; 
+
+}
 #main-nav {
 	background-color: #4B64FF;
 	color: white;
@@ -25,13 +32,7 @@
 }
 
 
-#news img{
-	width: 500px;
-	height: 75px;
-	margin-left: 10px;
-	margin-right:25px; 
 
-}
 #search {
 	 width: 300px;
   	-webkit-transition: width 0.4s ease-in-out;
@@ -39,6 +40,8 @@
  	height: 39px;
  	margin-top: 15px;
  	margin-left: 100px;
+ 	-moz-border-radius: 10px;
+	-webkit-border-radius: 10px;
 
 }
 #search:focus{
@@ -50,7 +53,7 @@
 .btn-primary{
 	margin-top: 20px;
 	margin-right: 65px;
-	width: 100px;
+	width: 150px;
 	height: 50px;
 	background-color: #4B64FF;
 }

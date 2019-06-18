@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Administrator</title>
+     <link rel="stylesheet" href="/css/style.css" type="text/css">
+    <link rel="stylesheet" type="text/css" href="/css/post.css">
+    <link rel="stylesheet" href="/css/hlink-treefiles.css" type="text/css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+</head>
+<body>
+
+
+<div class="body">
+    <div id="header">
+        <div>
+            <form>
+                <a href="#" id="news">
+                    <img src="/img/breaknew.png">
+                </a>
+
+            </form>
+
+        </div>
+
+    </div>
+
+    <div id="main-nav">
+        <nav class="navbar navbar-expand-lg navbar-dark">
+
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="/">Home <span class="sr-only">(current)</span></a>
+                    </li>
+                
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        </nav>
+    </div>
+
+    <div id="body">
+        <div id="body-card">
+            <div id="body-left">
+                <br>
+
+                <div>
+                    <!--head tile-->
+                    <!--bieu dien cay thu muc tai day-->
+                    <p class="hlink">
+                        <i class="fas fa-home mr-1"></i><a href="../index.html">Trang chu</a>
+                        <i class="fa fa-angle-right mr-1"></i>
+
+                    </p>
+                    <div class="container">
+                        <div class="preview news-title">
+                            <h2 class="news-title">
+                        {{this.viewpost.postTieuDe}}
+
+                    </h2>
+                            <div>
+
+                                <div class="news-cell card-info">
+                                    <img class="imgPreview" src="/img/{{this.viewpost.postAnhTieuDe}}" />
+
+                                    <div class="news-content news-title">
+                                        <span>
+                                <a href="/postlist/category/{{this.viewpost.cateID}}">>>{{this.viewpost.cateName}}</a>                                                             
+                            </span>
+                                        <span class="news-content-item">                                
+                                <time id="date" name="date" datetime="{{this.viewpost.ngaydang}}">Ngày đăng bài: {{this.viewpost.ngaydang}} </time>
+                            </span>
+                                    </div>
+                                    <br>
+                                    <div hidden class="form-group">
+                                        <label class="text-success font-weight-bold" for="editor1">Nội dung</label>
+                                        <textarea name="editor1" id="editor1" rows="10" cols="80">
+                                            {{this.viewpost.postNoiDung}}
+                                        </textarea>
+                                    </div>
+                                    <br> 
+                                    {{!-- noidungggggggggggggggggggggggggggggggggg --}} {{!--
+                                    <div id="topBar"> <a href="#"> HOME </a> </div> --}}
+                                    <div id="content"> </div>
+                                    {{!-- noidungggggggggggggggggggggggggggggggggg --}}
+                                </div>
+
+                                <div class="new-content news-title">
+                                    <span class="badge badge-pill badge-info">
+                               <a href="/postlist/tag/{{this.viewpost.tagID}}">{{this.viewpost.tagName}}</a>
+                            </span>
+                                </div>
+                            </div>
+                            <hr>
+                            <div class="container">
+                                <div class="row">
+                                    <h5>Để lại bình luận</h5>
+                                </div>
+
+                                <div class="row">
+
+                                    <div class="col-md-12">
+                                        <div class="widget-area no-padding blank">
+                                            <div class="status-upload">
+                                                <form>
+                                                    <textarea placeholder="Leave your comment here"></textarea>
+                                                    <ul>
+                                                        <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Audio"><i class="fa fa-music"></i></a></li>
+                                                        <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Video"><i class="fa fa-video-camera"></i></a></li>
+                                                        <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Sound Record"><i class="fa fa-microphone"></i></a></li>
+                                                        <li><a title="" data-toggle="tooltip" data-placement="bottom" data-original-title="Picture"><i class="fa fa-picture-o"></i></a></li>
+                                                    </ul>
+                                                    <button type="submit" class="btn btn-success green"><i class="fa fa-share"></i> Share</button>
+                                                </form>
+                                            </div>
+                                            <!-- Status Upload  -->
+                                        </div>
+                                        <!-- Widget Area -->
+                                    </div>
+
+                                </div>
+                            </div>
+                            <hr>
+                            <div>
+                                <h3> bài viết cùng chuyên mục</h3> {{!--
+                                <table>
+                                    <tr>
+                                        <td>
+                                            <div class="news-cell card-info">
+                                                <a class="preview img-news-preview" href="http://www.tintucnongnghiep.com/2019/04/tieu-chet-trang-gia-re-nhu-rau-bai-2.html" target="_blank">
+                                                    <img class="img-news-preview" src="https://4.bp.blogspot.com/-AEaDZKISJW4/XK7xzQksMcI/AAAAAAACkeg/T1pAxEHFQwgfX0LQ41rl5E9M7NDMR6EWgCLcBGAs/s400/tieu%2B1.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="news-related">
+                                                <h10 class="news-title">
+                                                    <a href="http://www.tintucnongnghiep.com/2019/04/tieu-chet-trang-gia-re-nhu-rau-bai-2.html" title="Tiêu chết trắng, giá rẻ như rau: Nông dân cầu cứu ngân hàng Tiêu chết trắng, giá rẻ như rau">
+                                    Tiêu chết trắng, giá rẻ như rau: Nông dân cầu cứu ngân hàng
+                                </a>
+                                                </h10>
+                                            </div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                        <td>
+                                            <div class="news-cell card-info">
+                                                <a class="preview img-news-preview" href="http://www.tintucnongnghiep.com/2019/04/gia-tieu-ieu-gao-ca-phe-cung-lao-doc.html" target="_blank">
+                                                    <img class="img-news-preview" src="https://1.bp.blogspot.com/-h2hza5-ZnsE/XK7rI_LTQHI/AAAAAAACkeM/90mR3Zw0pXcwQoYbGtjA90Sx7R3kNFTYACLcBGAs/s1600/buoi.jpg" />
+                                                </a>
+                                            </div>
+                                            <div class="news-related">
+                                                <h10 class="news-title">
+                                                    <a href="http://www.tintucnongnghiep.com/2019/04/gia-tieu-ieu-gao-ca-phe-cung-lao-doc.html" title="Giá tiêu, điều, gạo, cà phê cùng lao dốc">
+                                Giá tiêu, điều, gạo, cà phê cùng lao dốc
+                            </a>
+                                                </h10>
+                                            </div>
+                                        </td>
+
+                                    </tr>
+
+                                </table> --}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- end head tile-->
+                <br>
+
+            </div>
+
+            <div hidden id="body-right">
+                <div class="ts-grid-box widgets category-list-item">
+                    <h2 class="widget-title">Categories</h2>
+                    <ul class="category-list">
+                        <li>
+                            <a href="#">Travel
+                  <span class="ts-orange-bg">10</span>
+                </a>
+                        </li>
+                        <li>
+                            <a href="#">Sports
+                  <span class="ts-green-bg">25</span>
+                </a>
+                        </li>
+                        <li>
+                            <a href="#">Travel
+                  <span class="ts-orange-bg">10</span>
+                </a>
+                        </li>
+                        <li>
+                            <a href="#">Fashion
+                  <span class="ts-pink-bg">10</span>
+                </a>
+                        </li>
+                        <li>
+                            <a href="#">Technology
+                  <span class="ts-blue-bg">10</span>
+                </a>
+                        </li>
+
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+
+        <div id="footer">
+            <footer class="page-footer font-small unique-color-dark">
+
+                <div style="background-color: #4B64FF;">
+                    <div class="container">
+
+                        <!-- Grid row-->
+                        <div class="row py-4 d-flex align-items-center">
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-5 text-center text-md-left mb-4 mb-md-0">
+                                <h6 class="mb-0">Liên hệ chúng tôi tại</h6>
+                            </div>
+                            <!-- Grid column -->
+
+                            <!-- Grid column -->
+                            <div class="col-md-6 col-lg-7 text-center text-md-right">
+
+                                <!-- Facebook -->
+                                <a class="fb-ic" href="#" style="color: black;">
+                                    <i class="fab fa-facebook-f white-text mr-4"> </i>
+                                </a>
+                                <!-- Google +-->
+                                <a class="gplus-ic" href="#" style="color: black;">
+                                    <i class="fab fa-google-plus-g white-text mr-4"> </i>
+                                </a>
+                                <!--Instagram-->
+                                <a class="ins-ic" href="#" style="color: black;">
+                                    <i class="fab fa-instagram white-text"> </i>
+                                </a>
+
+                            </div>
+                            <!-- Grid column -->
+
+                        </div>
+                        <!-- Grid row-->
+
+                    </div>
+                </div>
+
+                <!-- Footer Links -->
+                <div class="container text-center text-md-left mt-5">
+
+                    <!-- Grid row -->
+                    <div class="row mt-3">
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-4 col-xl-3 mx-auto mb-4">
+
+                            <!-- Content -->
+                            <h6 class="text-uppercase font-weight-bold">Team đồ án web No.41</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p>Đồ an báo điện tử của bộ môn phát triển ứng dụng web.</p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-2 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                            <!-- Links -->
+                            <h6 class="text-uppercase font-weight-bold">Về chúng tôi</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p>
+                                <a href="#!">Giới thiệu</a>
+                            </p>
+                            <p>
+                                <a href="#!">Khó khăn</a>
+                            </p>
+                            <p>
+                                <a href="#!">Thuận lợi</a>
+                            </p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-3 col-lg-2 col-xl-2 mx-auto mb-4">
+
+                            <!-- Links -->
+                            <h6 class="text-uppercase font-weight-bold">Về đồ án</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p>
+                                <a href="#!">Giới thiệu</a>
+                            </p>
+                            <p>
+                                <a href="#!">Tiến độ</a>
+                            </p>
+                            <p>
+                                <a href="#!">Nguồn tham khảo</a>
+                            </p>
+                            <p>
+                                <a href="#!">Hướng dẫn</a>
+                            </p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                        <!-- Grid column -->
+                        <div class="col-md-4 col-lg-3 col-xl-3 mx-auto mb-md-0 mb-4">
+
+                            <!-- Links -->
+                            <h6 class="text-uppercase font-weight-bold">Liên hệ</h6>
+                            <hr class="deep-purple accent-2 mb-4 mt-0 d-inline-block mx-auto" style="width: 60px;">
+                            <p>
+                                <i class="fas fa-home mr-3"></i> Trường Đại học Khoa học Tự nhiên TPHCM</p>
+                            <p>
+                                <i class="fas fa-envelope mr-3"></i> leonthaibao@gmail.com</p>
+                            <p>
+                                <i class="fas fa-phone mr-3"></i> 0789 578 259</p>
+
+                        </div>
+                        <!-- Grid column -->
+
+                    </div>
+                    <!-- Grid row -->
+
+                </div>
+                <!-- Footer Links -->
+
+            </footer>
+            <!-- Footer -->
+        </div>
+
+    </div>
+</div>
+
+  <!-- Optional JavaScript -->
+    <script src="//cdn.ckeditor.com/4.11.4/full/ckeditor.js"></script>
+     <script>
+         
+       CKEDITOR.replace( 'editor1' );
+       CKEDITOR.config.startupMode = 'source';
+      
+    </script>   
+    <script>
+     
+        window.onload = function(){
+            
+             document.getElementById("content").innerHTML=(CKEDITOR.instances.editor1.getData());
+        };
+    
+        {{!-- function load_home() {
+            document.getElementById("content").innerHTML=(CKEDITOR.instances.editor1.getData());
+        } --}}
+    </script>
+    
+{{!-- //------------------------------- --}}
+<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+</body>
+</html>
