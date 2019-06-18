@@ -21,28 +21,44 @@ module.exports = {
     listCDDLoad: (writerid)=>{
         return db.load(`SELECT * FROM post p, category c, tags t where p.postTrangThaiID='CDD' and p.postWriterID=  ${writerid} and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID`)
     },
-    singleCDDLoad: (postid, writerid)=>{
-        return db.load(`SELECT * FROM post p, category c, tags t where  p.postID=${postid} and p.postTrangThaiID='CDD' and p.postWriterID=  ${writerid} and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID`);
+    singleLoad: (postid)=>{
+        return db.load(`SELECT * FROM post p, category c, tags t where  p.postID=${postid}  and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID`);
     },
     listDDDLoad: (writerid)=>{
         return db.load(`SELECT * FROM post p, category c, tags t where p.postTrangThaiID='DDD' and p.postWriterID=  ${writerid} and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID`)
     },
-    singleDDDLoad: (postid, writerid)=>{
-        return db.load(`SELECT * FROM post p, category c, tags t where  p.postID=${postid} and p.postTrangThaiID='DDD' and p.postWriterID=  ${writerid} and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID`);
-    },
+   
     listDXBLoad: (writerid)=>{
         return db.load(`SELECT * FROM post p, category c, tags t where p.postTrangThaiID='DXB' and p.postWriterID=  ${writerid} and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID`)
     },
-    singleDXBLoad: (postid, writerid)=>{
-        return db.load(`SELECT * FROM post p, category c, tags t where  p.postID=${postid} and p.postTrangThaiID='DXB' and p.postWriterID=  ${writerid} and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID`);
-    },
+  
     listBTCLoad: (writerid)=>{
         return db.load(`SELECT * FROM post p, category c, tags t where p.postTrangThaiID='BTC' and p.postWriterID=  ${writerid} and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID`)
     },
-    singleBTCLoad: (postid, writerid)=>{
-        return db.load(`SELECT * FROM post p, category c, tags t where  p.postID=${postid} and p.postTrangThaiID='BTC' and p.postWriterID=  ${writerid} and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID`);
-    },
+  
     loadthreetable:(postid,writerid)=>{
         return db.load3table(`SELECT c.cateID, c.cateName FROM category c ;SELECT t.tagID, t.tagName FROM tags t ; SELECT * FROM post p, category c, tags t where  p.postID=${postid}  and p.postWriterID=  ${writerid} and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID`)
-    }
+    },
+    listChuaDuocDuyetLoad: (editorid)=>{
+        return db.load(`SELECT * FROM post p, category c, tags t where p.postTrangThaiID='CDD'  and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID and p.postChuyenMucID in (select userCateID from users where userID = ${editorid})`)
+    },
+    loadthreetable:(postid)=>{
+        return db.load3table(`SELECT c.cateID, c.cateName FROM category c ;SELECT t.tagID, t.tagName FROM tags t ; SELECT * FROM post p, category c, tags t where  p.postID=${postid}  and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID`)
+    },
+    listDaPheDuyet: (editorid)=>{
+        return db.load(`SELECT * FROM post p, category c, tags t where (p.postTrangThaiID='BTC' or p.postTrangThaiID='DDD')  and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID and p.postChuyenMucID in (select userCateID from users where userID = ${editorid})`)
+    },
+    pageByCat: ( limit, offset) => {
+        return db.load(`SELECT * FROM post p, category c, tags t where p.postTrangThaiID!='DXB' and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID limit ${limit} offset ${offset}`);
+    },
+    
+    countByCat: () => {
+        return db.load(`select count(*) as total from post p where p.postTrangThaiID!='DXB'`);
+    },
+    pageByDXBPost: ( limit, offset) => {
+        return db.load(`SELECT * FROM post p, category c, tags t where p.postTrangThaiID='DXB' and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID limit ${limit} offset ${offset}`);
+    },
+    countByDXBPost: () => {
+        return db.load(`select count(*) as total from post p where p.postTrangThaiID='DXB'`);
+    },
 }
