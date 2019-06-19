@@ -75,7 +75,7 @@ router.get('/add',(req,res)=>{
     })
 })
 router.post('/add',(req,res)=>{
-    var writerID=1;
+    var user=req.user;
     var now = moment().format('YYYY-MM-DD');
     var trangthai = 'CDD';
     var luotview = 0;
@@ -90,7 +90,7 @@ router.post('/add',(req,res)=>{
         postLuotView: luotview,
         postHangBaiViet: req.body.inputhangbaiviet,
         postNgayDang: now,
-        postWriterID: writerID,
+        postWriterID: user.userID,
     }
     postModel.add(entity).then((id)=>{
         console.log(id);
@@ -102,9 +102,9 @@ router.post('/add',(req,res)=>{
 //UPDATEEEEEEEEEEEEEEEEEEEEEEEEEEEE CDD
 router.get('/update/:id',(req,res)=>{
     var postid = req.params.id;
-    var writerid = 1;
+    var user = req.user;
 
-    postModel.loadthreetable(postid,writerid).then(rows=>{
+    postModel.loadthreetable(postid,user.userID).then(rows=>{
         if(rows.length>0){
             
             console.log(rows[0]);
@@ -130,7 +130,7 @@ router.get('/update/:id',(req,res)=>{
 })
 
 router.post('/update',(req,res)=>{
-    var writerID=1;
+    var user=req.user;
     var now = moment().format('YYYY-MM-DD');
     var trangthai = 'CDD';
     var luotview = 0;
@@ -146,7 +146,7 @@ router.post('/update',(req,res)=>{
         postLuotView: luotview,
         postHangBaiViet: req.body.inputhangbaiviet,
         postNgayDang: now,
-        postWriterID: writerID,
+        postWriterID: user.userID,
     }
     postModel.update(entity).then((id)=>{
         console.log(id);
@@ -158,9 +158,9 @@ router.post('/update',(req,res)=>{
 //UPDATEEEEEEEEEEEEEEEEEEEEEEEEEEEE CDD
 router.get('/update/btc/:id',(req,res)=>{
     var postid = req.params.id;
-    var writerid = 1;
+    var user = req.userID;
 
-    postModel.loadthreetable(postid,writerid).then(rows=>{
+    postModel.loadthreetable(postid,user.userID).then(rows=>{
         if(rows.length>0){
             
             console.log(rows[0]);
@@ -187,8 +187,8 @@ router.get('/update/btc/:id',(req,res)=>{
 
 //DDD lISTTTTTTTTTTTTTTTTTTTTT
 router.get('/ddd',(req,res)=>{
-    var writerid = 1;
-    postModel.listDDDLoad(writerid).then(rows=>{
+    var user = req.user;
+    postModel.listDDDLoad(user.userID).then(rows=>{
         if(rows.length>0){
             res.render('writer/writer_listDDD',{
                 error: false,
@@ -211,8 +211,8 @@ router.get('/ddd',(req,res)=>{
 
 //DXB LISSSSSSSSSSSSSSSSSSSS2qsadddddddddddddddddddd
 router.get('/dxb',(req,res)=>{
-    var writerid = 1;
-    postModel.listDXBLoad(writerid).then(rows=>{
+    var user = req.user;
+    postModel.listDXBLoad(user.userID).then(rows=>{
         if(rows.length>0){
             res.render('writer/writer_listDXB',{
                 error: false,
@@ -235,8 +235,8 @@ router.get('/dxb',(req,res)=>{
 
 //BTCCCCCCCCCCCCCCCCCc2qsadddddddddddddddddddd
 router.get('/btc',(req,res)=>{
-    var writerid = 1;
-    postModel.listBTCLoad(writerid).then(rows=>{
+    var user = req.user;
+    postModel.listBTCLoad(user.userID).then(rows=>{
         if(rows.length>0){
             res.render('writer/writer_listBTC',{
                 error: false,

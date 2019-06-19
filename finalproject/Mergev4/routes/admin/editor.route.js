@@ -4,8 +4,8 @@ var moment = require('moment');
 var postModel = require('../../models/post.model');
 
 router.get('/',(req,res)=>{
-    var editorid =3;
-    postModel.listChuaDuocDuyetLoad(editorid).then(rows=>{
+    var user =req.user;
+    postModel.listChuaDuocDuyetLoad(user.userID).then(rows=>{
         if(rows.length>0){
             res.render('editor/editor_index',{
                 error: false,
@@ -26,8 +26,8 @@ router.get('/',(req,res)=>{
 })
 //list
 router.get('/list',(req,res)=>{
-    var editorid =3;
-    postModel.listDaPheDuyet(editorid).then(rows=>{
+    var user =req.user;
+    postModel.listDaPheDuyet(user.userID).then(rows=>{
         if(rows.length>0){
             res.render('editor/editor_list',{
                 error: false,
@@ -73,7 +73,7 @@ router.get('/confirm/:id',(req,res)=>{
 })
 
 router.post('/confirm',(req,res)=>{
-    var editorid=2;
+    var user=req.userID;
     var trangthai = 'DDD';
     var entity = {
         postID: req.body.inputid,
@@ -81,7 +81,7 @@ router.post('/confirm',(req,res)=>{
         postTagID: req.body.inputtag,
         postTrangThaiID: trangthai,
         postHangBaiViet: req.body.inputhangbaiviet,
-        postEditorID: editorid,
+        postEditorID: user.userID,
         postNgayXuatBan: req.body.inputngayxuatban
     }
     postModel.update(entity).then((id)=>{
@@ -119,12 +119,12 @@ router.get('/refuse/:id',(req,res)=>{
 })
 
 router.post('/refuse',(req,res)=>{
-    var editorid=2;
+    var user=req.userID;
     var trangthai = 'BTC';
     var entity = {
         postID: req.body.inputid,
         postTrangThaiID: trangthai,
-        postEditorID: editorid,
+        postEditorID: user.userID,
         postLyDoTuChoi: req.body.inputlydotuchoi,
     }
     postModel.update(entity).then((id)=>{

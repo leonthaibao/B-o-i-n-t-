@@ -249,7 +249,7 @@ router.post('/posts/add',(req,res)=>{
     var now = moment().format('YYYY-MM-DD');
     var trangthai = 'CDD';
     var luotview = 0;
-    var adminid=4;
+    var user=req.user;
     var entity = {
         postAnhTieuDe: req.body.inputfilename,
         postTieuDe: req.body.inputtieude,
@@ -261,7 +261,7 @@ router.post('/posts/add',(req,res)=>{
         postLuotView: luotview,
         postHangBaiViet: req.body.inputhangbaiviet,
         postNgayDang: now,
-        postWriterID: adminid,
+        postWriterID: user.userID,
     }
     postModel.add(entity).then((id)=>{
         console.log(id);
@@ -273,9 +273,9 @@ router.post('/posts/add',(req,res)=>{
 //UPDATEEEEEEEEEEEEEEEEEEEEEEEEEEEE CDD
 router.get('/posts/update/:id',(req,res)=>{
     var postid = req.params.id;
-    var adminid = 4;
+    var user = req.user;
 
-    postModel.loadthreetable(postid,adminid).then(rows=>{
+    postModel.loadthreetable(postid,user.userID).then(rows=>{
         if(rows.length>0){
             
             res.render('admin/posts/post_update',{
@@ -298,7 +298,7 @@ router.get('/posts/update/:id',(req,res)=>{
 })
 
 router.post('/posts/update',(req,res)=>{
-    var adminid=4;
+    var user=req.user;
     var now = moment().format('YYYY-MM-DD');
     var trangthai = 'CDD';
     var luotview = 0;
@@ -314,7 +314,7 @@ router.post('/posts/update',(req,res)=>{
         postLuotView: luotview,
         postHangBaiViet: req.body.inputhangbaiviet,
         postNgayDang: now,
-        postWriterID: adminid,
+        postWriterID: user.userID,
     }
     postModel.update(entity).then((id)=>{
         console.log(id);
@@ -359,9 +359,9 @@ router.post('/posts/delete',(req,res)=>{
 //xuat ban bai viet
 router.get('/posts/confirm/:id',(req,res)=>{
     var postid = req.params.id;
-    var adminid = 4;
+    var user = req.user;
 
-    postModel.loadthreetable(postid,adminid).then(rows=>{
+    postModel.loadthreetable(postid,user.userID).then(rows=>{
         if(rows.length>0){
             
             res.render('admin/posts/post_xuatban',{
@@ -384,14 +384,14 @@ router.get('/posts/confirm/:id',(req,res)=>{
 })
 
 router.post('/posts/confirm',(req,res)=>{
-    var adminid=4;
+    var user=req.user;
     var now = moment().format('YYYY-MM-DD');
     var entity = {
         postID: req.body.inputid,
         postTieuDe: req.body.inputtieude,
         postTrangThaiID: req.body.inputtrangthai,
         postNgayDang: now,
-        postEditorID: adminid,
+        postEditorID: user.userID,
     }
     postModel.update(entity).then((id)=>{
         console.log(id);
@@ -404,9 +404,9 @@ router.post('/posts/confirm',(req,res)=>{
 //thu hoi bai viet
 router.get('/posts/rollback/:id',(req,res)=>{
     var postid = req.params.id;
-    var adminid = 4;
+    var user = req.user;
 
-    postModel.loadthreetable(postid,adminid).then(rows=>{
+    postModel.loadthreetable(postid,user.userID).then(rows=>{
         if(rows.length>0){
             
             res.render('admin/posts/post_thuhoi',{
