@@ -42,4 +42,7 @@ module.exports = {
     countByPosttheotag: (tagid) => {
         return db.load(`select count(*) as total from post where postTagID=${tagid} and postTrangThaiID='DXB' or(postTrangThaiID='DDD' and  postNgayXuatBan <= curdate())`);
     },
+    detailLoad: (postid) =>{
+        return db.load3table(`select *,date_format(postNgayXuatBan,'%d-%m-%Y') as ngayxuatban from post p, category c, tags t where  p.postID=${postid}  and p.postTagID = t.tagID and p.postChuyenMucID = c.cateID;select * from post where postID != ${postid} limit 5;update post set postLuotView=(postLuotView+1) where ${postid}=?`)
+    }
 }
