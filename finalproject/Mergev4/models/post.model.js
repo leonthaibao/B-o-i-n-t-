@@ -68,7 +68,6 @@ module.exports = {
         return db.load5table(`SELECT * FROM tags,post WHERE post.postTagID = tags.tagID ORDER BY post.postLuotView DESC limit 3;select * from tags,post WHERE post.postTagID = tags.tagID ORDER BY post.postLuotView DESC limit 10;select * from tags,post WHERE post.postTagID = tags.tagID ORDER BY post.postNgayDang DESC limit 10 ;SELECT * FROM tags;SELECT * FROM category`)
     },
     loadSearch:(name) => {
-        return db.load(`
-        SELECT *, MATCH (post.postTieuDe,post.postTomTat,post.postNoiDung) against ('${name}') as score FROM post,category,tags limit 5`)
+        return db.load(`SELECT *, MATCH (post.postTieuDe,post.postTomTat,post.postNoiDung) against ('${name}') as score FROM post,category,tags WHERE post.postTagID=tags.tagID and post.postChuyenMucID=category.cateID ORDER BY score desc limit 5`)
     }
 }
