@@ -46,11 +46,12 @@ router.get('/', (req, res, next) => {
 router.get('/post/detail/:id',(req,res)=>{
     var postid = req.params.id;
 
-    postModel.singleLoad(postid).then(rows=>{
+    postModel.detailLoad(postid).then(rows=>{
         if(rows.length>0){
             res.render('arrPost/detail',{
                 error: false,
-                viewpost: rows[0],
+                viewpost: rows[0][0],
+                chungchuyenmuc:rows[1],
                 layout: false
             });
         }else{
