@@ -65,15 +65,10 @@ module.exports = {
         return db.load(`select * from post order by postLuotView DESC limit 3`);
     },
     loadPostFourTable:()=>{
-        return db.load5table(`
-        select * from post order by postLuotView DESC limit 3;
-        select * from post order by postLuotView DESC limit 10;
-        SELECT * FROM post order by postNgayDang DESC limit 10 ;       
-        SELECT * FROM tags;
-        SELECT * FROM category`)
+        return db.load5table(`SELECT * FROM tags,post WHERE post.postTagID = tags.tagID ORDER BY post.postLuotView DESC limit 3;select * from tags,post WHERE post.postTagID = tags.tagID ORDER BY post.postLuotView DESC limit 10;select * from tags,post WHERE post.postTagID = tags.tagID ORDER BY post.postNgayDang DESC limit 10 ;SELECT * FROM tags;SELECT * FROM category`)
     },
     loadSearch:(name) => {
         return db.load(`
-        SELECT *, MATCH (postTieuDe,postTomTat,postNoiDung) against ('${name}') as score FROM post limit 5`)
+        SELECT *, MATCH (post.postTieuDe,post.postTomTat,post.postNoiDung) against ('${name}') as score FROM post,category,tags limit 5`)
     }
 }

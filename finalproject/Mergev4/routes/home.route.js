@@ -24,9 +24,6 @@ router.get('/', (req,res,next)=>{
                 rows[2][i]['postPlace'] = false;
             }
         }
-        for (var i=0;i<10;i++){
-            
-        }
         res.render('home',{          
             list: rows[0],
             mostView: rows[1],
