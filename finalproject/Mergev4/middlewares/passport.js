@@ -26,13 +26,15 @@ module.exports = function (app) {
         }
         return done(null, false, { message: 'Invalid password.' });
       }
-      else {
+      if(rows[1].length != 0) {
         var user = rows[1][0];
         if(user.userPassword === password){
           return done(null, user);
         }
         return done(null, false, { message: 'Invalid password.' });
       }
+      return done(null, false, { message: 'Invalid username.' });
+
 
 
 

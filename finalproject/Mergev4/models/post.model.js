@@ -61,4 +61,19 @@ module.exports = {
     countByDXBPost: () => {
         return db.load(`select count(*) as total from post p where p.postTrangThaiID='DXB'`);
     },
+    loadTop3Post:() => {
+        return db.load(`select * from post order by postLuotView DESC limit 3`);
+    },
+    loadPostFourTable:()=>{
+        return db.load5table(`
+        select * from post order by postLuotView DESC limit 3;
+        select * from post order by postLuotView DESC limit 10;
+        SELECT * FROM post order by postNgayDang DESC limit 10 ;       
+        SELECT * FROM tags;
+        SELECT * FROM category`)
+    },
+    loadSearch:(name) => {
+        return db.load(`
+        SELECT *, MATCH (postTieuDe,postTomTat,postNoiDung) against ('${name}') as score FROM post limit 5`)
+    }
 }

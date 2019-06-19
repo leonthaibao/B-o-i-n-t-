@@ -5,7 +5,7 @@ var createConnection = () =>{
         host     : 'localhost',
         port     :   3306,
         user     : 'root',
-        password : 'root',
+        password : '',
         database : 'baodientu',
         debug: false,
         multipleStatements: true
@@ -34,6 +34,41 @@ module.exports = {
             var connection= createConnection();
             connection.connect();   
             connection.query(sql, [3, 1], function(error, results, fields) {
+                if (error) {
+                    reject(error);
+                }
+                else{   
+                    resolve(results);
+                }
+                connection.end();
+            });
+            
+        })
+
+    },
+    load4table: sql=>{
+        return new Promise((resolve,reject)=>{
+            var connection= createConnection();
+            connection.connect();   
+            connection.query(sql, [4, 1], function(error, results, fields) {
+                if (error) {
+                    reject(error);
+                }
+                else{   
+                    resolve(results);
+                }
+                connection.end();
+            });
+            
+        })
+
+    },
+
+    load5table: sql=>{
+        return new Promise((resolve,reject)=>{
+            var connection= createConnection();
+            connection.connect();   
+            connection.query(sql, [5, 1], function(error, results, fields) {
                 if (error) {
                     reject(error);
                 }
