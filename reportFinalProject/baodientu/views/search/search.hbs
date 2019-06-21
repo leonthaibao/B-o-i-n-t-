@@ -1,0 +1,49 @@
+ {{#section 'css'}}
+        <link rel="stylesheet" type="text/css" href="/css/catogorysearch.css">
+        <link rel="stylesheet" type="text/css" href="/css/styleserach.css">
+ {{/section}}      
+ <br>         
+                <div class="container shadow">   
+                <h1>Kết quả tìm kiếm</h1>
+
+                {{#each this.list}}
+                    <div class="news-cell card-info">
+                    <a class="preview img-news-preview" href="/writer/show/{{postID}}"  target="_blank">
+                        <img class="img-news-preview" src="/img/{{postAnhTieuDe}}" />
+                    </a>
+                    <div class="preview news-title">
+                        <h2 class="news-title font-weight-normal h3">
+                            <a href="/writer/show/{{postID}}" title="Giá tiêu, điều, gạo, cà phê cùng lao dốc">
+                                {{postTieuDe}}
+                            </a>
+                        </h2>
+                        <div class="news-abstract h6 text-muted font-weight-normal">
+                            <p>
+                                {{postTomTat}}
+                            </p>
+                        </div>
+                        <div class="news-content news-title">
+                            <span class="news-content-icon fas fa-hashtag">
+                                <a href="nong-san.html">{{cateName}}</a>                                                             
+                            </span>
+                            <span class="news-content-item news-content-icon fas fa-calendar-alt">                                
+                                <time  datetime="4/15/2019">  &nbsp;&nbsp;{{postNgayDang}} </time>
+                            </span>
+                            <span class="news-content-item news-content-icon fas fa-comment ">                                
+                                &nbsp;&nbsp;0 comment 
+                            </span>
+                        </div>
+                        <div class="new-content news-title">
+                            <span class="badge badge-pill badge-info">
+                               <a href="#">{{tagName}}</a>
+                            </span>
+                        </div>
+                    </div>  
+                                    
+                </div>
+                <hr>
+                {{/each}}
+                
+
+                
+                </div>
